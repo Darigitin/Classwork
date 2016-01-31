@@ -1,0 +1,84 @@
+vertefeuille
+===========================================================================
+NOTE:
+
+To find my comments in this file, which contains both your
+program and its output, search for the string "MCU".
+
+Your grade is at the bottom of this file.
+===========================================================================
+
+FirstProg.java SOURCE: ============================
+import java.io.*;
+
+public class FirstProg
+{
+	public static void main(String args[] ) throws IOException
+	{
+
+		BufferedReader input = new BufferedReader (new InputStreamReader (System.in));
+		String input_string;
+		int grade;
+		int count;
+		int sum;
+		double avg;
+
+		count = 0;
+		sum = 0;
+		
+		while (true)
+		{
+			System.out.println("enter a number (-1 to quit): ");
+			input_string = input.readLine();
+			grade = Integer.parseInt(input_string);
+
+			if (grade == -1) break;
+
+			count = count + 1;
+			sum = sum + grade;
+			
+			System.out.println("count = " + count);
+			System.out.println("sum = " + sum + "\n");
+		}
+		
+		avg = (float) sum / count;
+		System.out.println("Average = " + avg);
+	}
+}
+OUTPUT: =====================================
+enter a number (-1 to quit):
+80
+count = 1
+sum = 80
+
+enter a number (-1 to quit):
+90
+count = 2
+sum = 170
+
+enter a number (-1 to quit):
+100
+count = 3
+sum = 270
+
+enter a number (-1 to quit):
+-1
+Average = 90.0
+
+DUE DATE: Sept 16  1:00pm   ================================================
+total 40
+drwxrwxr-x 2 vertefeuille vertefeuille 4096 2010-09-16 11:49 .
+drwxrwx--- 6 vertefeuille vertefeuille 4096 2010-09-15 12:37 ..
+-rw-rw-r-- 1 vertefeuille vertefeuille 1332 2010-09-08 12:26 FirstProg.class
+-rw-rw-r-- 1 vertefeuille vertefeuille  694 2010-09-08 12:26 FirstProg.java
+-rw-r--r-- 1 root         root         1197 2010-09-16 11:49 README.MCU
+===========================================================================
+    *****    All students are required to read and understand   *****
+    *****    the Attendance, Homework, and Late Work Policies   *****
+    *****    which can be found at http://cs.actx.edu/~usnick   *****
+===========================================================================
+Instructor Comments:
+
+Good job.
+
+Grade:  100

@@ -1,0 +1,78 @@
+vertefeuille
+===========================================================================
+NOTE:
+
+To find my comments in this file, which contains both your
+program and its output, search for the string "MCU".
+
+Your grade is at the bottom of this file.
+===========================================================================
+
+Lab3.java SOURCE: ============================
+public class Lab3
+{
+	public static void main(String args[])
+	{
+		int i, j, h;
+		double a, b;
+		boolean tonsils = false;
+		String fname = "Matt";
+		String lname = "Vertefeuille";
+		int myArray[] = new int[10];
+		int myOtherArray[] = {4, 7, 5, 2, 9};
+		a = 20.0;
+		b = 7.0;
+		i = 20;
+		j = 7;
+		h = 5 * 12 + 6;
+		myArray[0] = 4;
+		myArray[1] = 7;
+		myArray[2] = 5;
+		myArray[3] = 2;
+		myArray[4] = 9;
+		System.out.println("The sum of a and b is " + (a + b));
+		System.out.println("The difference of a and b is " + (a - b));
+		System.out.println("The product of a and b is " + (a * b));
+		System.out.println("The quotient of a and b is " + (a / b));
+		System.out.println("The sum of i and j is " + (i + j));
+		System.out.println("The difference of i and j is " + (i - j));
+		System.out.println("The product of i and j is " + (i * j));
+		System.out.println("The quotient of i and j is " + (i / j));
+		System.out.println("The remainder of i and j is " + (i % j));
+		System.out.println("Have I had my tonsils removed: " + tonsils);
+		System.out.println("Hello, my name is " + fname + " " + lname + ".");
+		System.out.println(lname + ", " + fname + " is my name.");
+		System.out.println("The BMI of a person who is 5'6 and 140lbs is " + ((140.0 * 703) / (h * h)));
+	}
+}
+OUTPUT: =====================================
+The sum of a and b is 27.0
+The difference of a and b is 13.0
+The product of a and b is 140.0
+The quotient of a and b is 2.857142857142857
+The sum of i and j is 27
+The difference of i and j is 13
+The product of i and j is 140
+The quotient of i and j is 2
+The remainder of i and j is 6
+Have I had my tonsils removed: false
+Hello, my name is Matt Vertefeuille.
+Vertefeuille, Matt is my name.
+The BMI of a person who is 5'6 and 140lbs is 22.594123048668504
+DUE DATE: Sept 29  10:30am   ================================================
+total 40
+drwxrwxr-x  2 vertefeuille vertefeuille 4096 2010-09-29 14:05 .
+drwxrwx--- 12 vertefeuille vertefeuille 4096 2010-09-29 12:20 ..
+-rw-rw-r--  1 vertefeuille vertefeuille 1737 2010-09-22 12:34 Lab3.class
+-rw-rw-r--  1 vertefeuille vertefeuille 1263 2010-09-22 12:34 Lab3.java
+-rw-r--r--  1 root         root         2215 2010-09-29 14:05 README.MCU
+===========================================================================
+    *****    All students are required to read and understand   *****
+    *****    the Attendance, Homework, and Late Work Policies   *****
+    *****    which can be found at http://cs.actx.edu/~usnick   *****
+===========================================================================
+Instructor Comments:
+
+Super job.
+
+Grade:  100

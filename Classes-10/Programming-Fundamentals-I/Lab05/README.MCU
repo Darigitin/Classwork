@@ -1,0 +1,137 @@
+vertefeuille
+===========================================================================
+NOTE:
+
+To find my comments in this file, which contains both your
+program and its output, search for the string "MCU".
+
+Your grade is at the bottom of this file.
+===========================================================================
+
+Lab5.java SOURCE: ============================
+import java.io.*;
+public class Lab5
+{
+	public static void main(String args[]) throws IOException
+	{
+		BufferedReader input = new BufferedReader ( new InputStreamReader (System.in));
+
+		int guess;
+		int  secretValue = (int) (10 * Math.random()) + 1;
+		int guesses[] = new int[5];
+		String input_string;
+		int i = 0;
+
+		while (i < 5)
+		{
+			System.out.println("enter a number between 1 and 10:");
+			input_string = input.readLine();
+			guess = Integer.parseInt(input_string);
+			
+			if (guess > secretValue)
+			{
+				System.out.println("Your guess of " + guess + " is too high.");
+				guesses[i] = guess;
+			}
+			else if (guess < secretValue)
+			{
+				System.out.println("Your guess of " + guess + " is too low.");
+				guesses[i] = guess;
+			}
+			else if (guess == secretValue)
+			{
+				System.out.println("Your guess of " + guess + " is CORRECT!");
+				guesses[i] = guess;
+				break;
+			}
+			i++;
+		}
+		if (i == 5)
+		{
+			System.out.println("Better luck next time!");
+		}
+		if (i == 0)
+		{
+			System.out.println("Your guesse(s) were: " + guesses[0]);
+		}
+		else if (i == 1)
+		{
+			System.out.println("Your guesse(s) were: " + guesses[0] + " " + guesses[1]);
+		}
+		else if (i == 2)
+		{
+			System.out.println("Your guesse(s) were: " + guesses[0] + " " + guesses[1] + " " + guesses[2]);
+		}
+		else if (i == 3)
+		{
+			System.out.println("Your guesse(s) were: " + guesses[0] + " " + guesses[1] + " " + guesses[2] + " " + guesses[3]);
+		}
+		else if (i == 4)
+		{
+			System.out.println("Your guesse(s) were: " + guesses[0] + " " + guesses[1] + " " + guesses[2] + " " + guesses[3] + " " + guesses[4]);
+		}
+		else
+		{
+			System.out.println("Your guesse(s) were: " + guesses[0] + " " + guesses[1] + " " + guesses[2] + " " + guesses[3] + " " + guesses[4]);
+		}
+	}
+}	
+OUTPUT: =====================================
+[root@cs lab5]# cd /home/$u/cosc1436/lab5; java Lab5
+enter a number between 1 and 10:
+5
+Your guess of 5 is too high.
+enter a number between 1 and 10:
+3
+Your guess of 3 is too low.
+enter a number between 1 and 10:
+4
+Your guess of 4 is CORRECT!
+Your guesse(s) were: 5 3 4
+[root@cs lab5]# cd /home/$u/cosc1436/lab5; java Lab5
+enter a number between 1 and 10:
+5
+Your guess of 5 is too low.
+enter a number between 1 and 10:
+6
+Your guess of 6 is too low.
+enter a number between 1 and 10:
+7
+Your guess of 7 is too low.
+enter a number between 1 and 10:
+8
+Your guess of 8 is too low.
+enter a number between 1 and 10:
+9
+Your guess of 9 is too low.
+Better luck next time!
+Your guesse(s) were: 5 6 7 8 9
+
+DUE DATE: Oct 20  10:30 am   ================================================
+total 40
+drwxrwxr-x  2 vertefeuille vertefeuille 4096 2010-10-21 13:54 .
+drwxrwx--- 17 vertefeuille vertefeuille 4096 2010-10-20 10:34 ..
+-rw-rw-r--  1 vertefeuille vertefeuille 1985 2010-10-11 12:15 Lab5.class
+-rw-rw-r--  1 vertefeuille vertefeuille 1754 2010-10-11 12:14 Lab5.java
+-rw-r--r--  1 root         root         2253 2010-10-21 13:54 README.MCU
+===========================================================================
+    *****    All students are required to read and understand   *****
+    *****    the Attendance, Homework, and Late Work Policies   *****
+    *****    which can be found at http://cs.actx.edu/~usnick   *****
+===========================================================================
+Instructor Comments:
+
+Good job.
+
+One small nit is the section of code at the end where you print out
+the guesses.  Your solution looks a little what one of my earlier
+students coined "Cave Man Programming" were the programmer uses 
+brute force, rather than elegance to solve a problem.  Imagine how
+ugly your code would be if there were 100 guesses allowed?  Ugh!  -5pts
+
+A better solution would be to use a loop to display the guesses,
+with the upper limit of that loop being limited to your variable 'i'.
+
+Otherwise, perfect.
+
+Grade:  95
