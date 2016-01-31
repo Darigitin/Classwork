@@ -1,0 +1,38 @@
+#########################################################################
+# HALT  = 0;  stop program
+# ADD   = 1;  GPREG is updated with itself + MEMORY[arg]
+# SUB   = 2;  GPREG is updated with itself - MEMORY[arg]
+# MLT   = 3;  GPREG is updated with itself * MEMORY[arg]
+# DIV   = 4;  GPREG is updated with itself / MEMORY[arg]
+# ILOAD = 5;  arg to GPREG
+# LOAD  = 6;  MEMORY[arg] to GPREG
+# STOR  = 7;  GPREG to MEMORY[arg]
+# READ  = 8;  keyboard to MEMORY[arg]
+# WRITE = 9;  MEMORY[arg] to screen
+# BR    = 10; unconditional branch to instruction at MEMORY[arg]
+# BZ    = 11; branch if GPREG is zero
+# BN    = 12; branch if GPREG is nonzero
+# DUMP  = 13; dump memory/register contents
+#########################################################################
+
+# if (GPREG == 0)
+#    println('1')
+LOAD 70  # Loading the value of MEMORY[70] to the GPREG
+STOR 72  # Storing the value of GPREG to MEMORY[72]
+READ 70  # Asking the user for input and storing that input in MEMORY[70]
+WRITE 70 # Displaying MEMORY[70] to the user
+DUMP 99
+LOAD 70  # Loading the value of MEMORY[70] to the GPREG
+DUMP 99
+ADD  72  # Adding the GPREG and the value of MEMORY[70} together and leaving the total in the GPRET
+DUMP 99
+STOR 70  # Storing the value of the GPREG to MEMORY[70]
+WRITE 70 # Displaying MEMORY[70] to the user
+DUMP 99
+READ 71  # Asking the user for input and storing that input in MEMORY[71]
+WRITE 71 # Displaying MEMORY[71] to the user
+LOAD 71  # Loading the value of MEMORY[71] to the GPREG
+BN 0     # If GPREG is a non zero number, execute instruction in MEMORY[0]
+HALT 99  # stop program
+
+

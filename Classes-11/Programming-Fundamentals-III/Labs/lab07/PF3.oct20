@@ -1,0 +1,254 @@
+Script started on Thu 20 Oct 2011 11:01:43 AM CDT
+==============================================================================
+ The temperature in Amarillo is  49
+==============================================================================
+[usnick@cs ~]$ ls
+adm		cosc2436   mailrc	  Oct19.class  public_html  tools
+afile		etc	   misc		  Oct19.java   t	    typescript
+arc		Fraction   mobile	  oo	       t.cpp	    unix
+baseConversion	JavaGames  MyClass.class  PF1	       tmp	    unix2
+bin		junk	   o		  PF2	       TODO
+[usnick@cs ~]$ cp cosc1437/
+[usnick@cs ~]$ cp PF2/recursion/*.java
+cp: target `PF2/recursion/MineSweeperHelp.java' is not a directory
+[usnick@cs ~]$ cp PF2/recursion/*.java .
+[usnick@cs ~]$ ls
+adm		JavaGames	Main4.java	      o		   t.cpp
+afile		junk		Main5.java	      Oct19.class  tmp
+arc		mailrc		Main6.java	      Oct19.java   TODO
+baseConversion	Main1a.java	Main.java	      oo	   tools
+bin		Main1.java	MineSweeperHelp.java  PF1	   typescript
+cosc2436	Main2.java	misc		      PF2	   unix
+etc		Main3.java	mobile		      public_html  unix2
+Fraction	Main4hint.java	MyClass.class	      t
+[usnick@cs ~]$ rm Main1*
+[usnick@cs ~]$ rm Main2*
+[usnick@cs ~]$ rm Main3*
+[usnick@cs ~]$ 
+[usnick@cs ~]$ 
+[usnick@cs ~]$ vi Main4.java
+
+        <snip!>  (text deleted from output)
+
+
+        <snip!>  (text deleted from output)
+
+[usnick@cs ~]$ 
+[usnick@cs ~]$ 
+[usnick@cs ~]$ cp Main4.java /usr/tmp
+[usnick@cs ~]$ cp Main5.java /usr/tmp
+[usnick@cs ~]$ javac Main5.java
+[usnick@cs ~]$ java Main5
+over! almost is Semester 
+[usnick@cs ~]$ cat Main5.java
+import java.util.*;
+
+public class Main5
+{
+    public static void main(String argv[])
+    {
+        recursive_meth("Semester is almost over!");
+
+        System.out.println();
+    }
+
+
+    public static void recursive_meth(String str)
+    {
+        int i;
+        StringTokenizer stok = new StringTokenizer(str);
+
+        if (stok.hasMoreTokens()) {
+            i = str.indexOf(' ');
+            if (i > 0) {
+                recursive_meth(str.substring(i+1));
+            }
+            System.out.print(stok.nextToken() + " ");
+        }
+
+        return;
+    }
+}
+[usnick@cs ~]$ ls
+adm		cosc2436   mailrc	   Main5.java		 mobile		oo	     t.cpp	 unix
+afile		etc	   Main4.class	   Main6.java		 MyClass.class	PF1	     tmp	 unix2
+arc		Fraction   Main4hint.java  Main.java		 o		PF2	     TODO
+baseConversion	JavaGames  Main4.java	   MineSweeperHelp.java  Oct19.class	public_html  tools
+bin		junk	   Main5.class	   misc			 Oct19.java	t	     typescript
+[usnick@cs ~]$ vi Main6.java
+
+        <snip!>  (text deleted from output)
+
+[usnick@cs ~]$ rm Mine*
+[usnick@cs ~]$ vi Main6.java
+
+        <snip!>  (text deleted from output)
+
+[usnick@cs ~]$ cat Main6.java
+
+public class Main6
+{
+    static class Person
+    {
+        public String name;
+
+        public Person son;
+        public Person daughter;
+
+        public Person(String n)
+        {
+            name = n;
+        }
+    }
+
+    public static void print_descendants(Person ref)
+    {
+        System.out.println("My Name is " + ref.name);
+
+        if (ref.son != null) {
+            print_descendants(ref.son);
+        }
+
+        if (ref.daughter != null) {
+            print_descendants(ref.daughter);
+        }
+
+        //System.out.println("My Name is " + ref.name);
+    }
+
+    public static void main(String args[])
+    {
+
+        Person grandad = new Person("grandad");
+        grandad.son = new Person("dad");
+        grandad.son.son = new Person("me");
+        grandad.son.daughter = new Person("sister");
+        grandad.son.daughter.daughter = new Person("niece");
+        grandad.daughter = new Person("aunt");
+        grandad.daughter.son = new Person("cousin");
+
+        print_descendants(grandad);
+    }
+}
+
+[usnick@cs ~]$ javac Main6.java
+[usnick@cs ~]$ cp Main6.java /usr/tmp
+[usnick@cs ~]$ ls /usr/tmp
+aug25a.cpp		   NoTemplateFunc.cpp  PF1.oct17  PF3.oct18    sep15.cpp    Sep26c.java
+aug30a.cpp		   Oct10b.java	       PF1.oct19  PF3.oct4     Sep19b.java  Sep26.java
+aug30b.cpp		   Oct10.java	       PF1.oct3   PF3.sep1     Sep19.java   Sep28b.java
+aug30.cpp		   Oct12b.java	       PF1.sep12  PF3.sep13    sep1a.cpp    Sep28.java
+commandInterpreter.pseudo  Oct12.java	       PF1.sep14  PF3.sep15    sep1b.cpp    sep6bblt.cpp
+IfElse1.java		   Oct17b.java	       PF1.sep19  PF3.sep22    sep1.cpp     sep6b.cpp
+IfElse2.java		   Oct17.java	       PF1.sep21  PF3.sep6     Sep21b.java  sep6b.h
+IfElse3.java		   Oct19.java	       PF1.sep26  pseudocode   Sep21c.java  sep6bmain.cpp
+ioexample.cpp		   Oct3.java	       PF1.sep28  S11	       Sep21d.java  sep6.cpp
+Main4.java		   PF1.aug29	       PF1.sep7   Sep12.java   Sep21e.java  Sep7.java
+Main5.java		   PF1.aug31	       PF3.aug25  sep13.cpp    Sep21f.java  TemplateClass.cpp
+Main6.java		   PF1.oct10	       PF3.aug30  Sep14b.java  Sep21.java   TemplateFunc.cpp
+NoTemplateClass.cpp	   PF1.oct12	       PF3.oct13  Sep14.java   Sep26b.java
+[usnick@cs ~]$ cd /usr/tmp
+[usnick@cs tmp]$ ls /tmp
+hsperfdata_ahmed   hsperfdata_goss    hsperfdata_larson     hsperfdata_nivens	     lost+found
+hsperfdata_balmes  hsperfdata_grant   hsperfdata_martin     hsperfdata_root	     Main1.java
+hsperfdata_ceaser  hsperfdata_hale    hsperfdata_maxwella   hsperfdata_rose	     Main2.java
+hsperfdata_cotney  hsperfdata_hayes   hsperfdata_maxwells   hsperfdata_usnick	     Main3.java
+hsperfdata_craver  hsperfdata_jabbie  hsperfdata_mccleskey  hsperfdata_vertefeuille
+hsperfdata_dumas   hsperfdata_lam     hsperfdata_moore	    hsperfdata_woodrell
+[usnick@cs tmp]$ cd /usr/tmp
+[usnick@cs tmp]$ mv Main4.java /tmp
+[usnick@cs tmp]$ mv Main5.java /tmp
+[usnick@cs tmp]$ mv Main6.java /tmp
+[usnick@cs tmp]$ cd /usr/tmp
+[usnick@cs tmp]$ vi PF3.oct10
+
+        <snip!>  (text deleted from output)
+
+[usnick@cs tmp]$ ls /tmp
+hsperfdata_ahmed   hsperfdata_goss    hsperfdata_larson     hsperfdata_nivens	     lost+found  Main6.java
+hsperfdata_balmes  hsperfdata_grant   hsperfdata_martin     hsperfdata_root	     Main1.java
+hsperfdata_ceaser  hsperfdata_hale    hsperfdata_maxwella   hsperfdata_rose	     Main2.java
+hsperfdata_cotney  hsperfdata_hayes   hsperfdata_maxwells   hsperfdata_usnick	     Main3.java
+hsperfdata_craver  hsperfdata_jabbie  hsperfdata_mccleskey  hsperfdata_vertefeuille  Main4.java
+hsperfdata_dumas   hsperfdata_lam     hsperfdata_moore	    hsperfdata_woodrell      Main5.java
+[usnick@cs tmp]$ 
+[usnick@cs tmp]$ cd
+[usnick@cs ~]$ java Main6
+My Name is grandad
+My Name is dad
+My Name is me
+My Name is sister
+My Name is niece
+My Name is aunt
+My Name is cousin
+[usnick@cs ~]$ vi Main6.java
+
+        <snip!>  (text deleted from output)
+
+[usnick@cs ~]$ cat Main6.java
+
+public class Main6
+{
+    static class Person
+    {
+        public String name;
+
+        public Person son;
+        public Person daughter;
+
+        public Person(String n)
+        {
+            name = n;
+        }
+    }
+
+    public static void print_descendants(Person ref)
+    {
+        //System.out.println("My Name is " + ref.name);
+
+        if (ref.son != null) {
+            print_descendants(ref.son);
+        }
+
+        if (ref.daughter != null) {
+            print_descendants(ref.daughter);
+        }
+
+        System.out.println("My Name is " + ref.name);
+    }
+
+    public static void main(String args[])
+    {
+
+        Person grandad = new Person("grandad");
+        grandad.son = new Person("dad");
+        grandad.son.son = new Person("me");
+        grandad.son.daughter = new Person("sister");
+        grandad.son.daughter.daughter = new Person("niece");
+        grandad.daughter = new Person("aunt");
+        grandad.daughter.son = new Person("cousin");
+
+        print_descendants(grandad);
+    }
+}
+
+[usnick@cs ~]$ javac Main6.java
+[usnick@cs ~]$ java Main6
+My Name is me
+My Name is niece
+My Name is sister
+My Name is dad
+My Name is cousin
+My Name is aunt
+My Name is grandad
+[usnick@cs ~]$ ls
+adm		cosc2436   mailrc	   Main5.java	       misc	      Oct19.java   t	  typescript
+afile		etc	   Main4.class	   Main6.class	       mobile	      oo	   t.cpp  unix
+arc		Fraction   Main4hint.java  Main6.java	       MyClass.class  PF1	   tmp	  unix2
+baseConversion	JavaGames  Main4.java	   Main6$Person.class  o	      PF2	   TODO
+bin		junk	   Main5.class	   Main.java	       Oct19.class    public_html  tools
+[usnick@cs ~]$ su -
+Password: 
+[usnick@cs ~]$ exit
+
+Script done on Thu 20 Oct 2011 11:46:44 AM CDT

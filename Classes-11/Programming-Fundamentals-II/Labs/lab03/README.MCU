@@ -1,0 +1,214 @@
+vertefeuille
+===========================================================================
+NOTE:
+
+To find my comments in this file, which contains both your
+program and its output, search for the string "MCU".
+
+Your grade is at the bottom of this file.
+===========================================================================
+
+Lab3.java SOURCE: ============================
+import java.io.*;
+public class Lab3
+{
+    public static void main(String argv[]) throws IOException
+    {
+        BigInteger b1,b2,b3;
+
+        b1 = new BigInteger();
+        b2 = new BigInteger();
+
+        System.out.println("input the first BigInteger:");
+        b1.inputBigInteger();
+        System.out.println("input the second BigInteger:");
+        b2.inputBigInteger();
+
+        System.out.print("BigInt #1:  ");
+        b1.printBigInteger();
+        System.out.print("BigInt #2:  ");
+	b2.printBigInteger();
+        System.out.println("            =========================");
+        b3 = b1.add(b2);
+        System.out.print("SUM:        ");
+	b3.printBigInteger();
+        System.out.println();
+
+        System.out.print("BigInt #1:  ");
+	b1.printBigInteger();
+        System.out.print("BigInt #2:  ");
+	b2.printBigInteger();
+        System.out.println("            =========================");
+        b3 = b1.subtract(b2);
+        System.out.print("DIFFERENCE: ");
+	b3.printBigInteger();
+        System.out.println();
+
+        System.out.print("BigInt #1:  ");
+	b1.printBigInteger();
+        System.out.print("BigInt #2:  ");
+	b2.printBigInteger();
+        System.out.println("            =========================");
+        b3 = b1.multiply(b2);
+        System.out.print("PRODUCT:    ");
+	b3.printBigInteger();
+        System.out.println();
+    }
+}
+import java.io.*;
+class BigInteger
+{
+   private final int INTSIZ = 25;
+   private int intArray[] = new int[INTSIZ];
+
+   public void printBigInteger()
+   {
+      for (int i = 0; i < INTSIZ; i++)
+      {
+         System.out.print(intArray[i]);
+      }
+      System.out.println();
+
+}
+   
+   public void inputBigInteger() throws IOException
+   {
+      BufferedReader input = new BufferedReader (new InputStreamReader(System.in));
+      System.out.print("enter the BigInteger: (do not pad with zeros); ");
+      String str = input.readLine();
+      if (str.length() > INTSIZ) throw new ArithmeticException("OVERFLOW!");
+      for (int i = 0; i < str.length(); i++)
+      {
+         intArray[INTSIZ - str.length() + i] = Integer.parseInt(str.substring(i, i+1));
+      }
+   }
+   public BigInteger add(BigInteger biref)
+   {
+      BigInteger bsum = new BigInteger();
+
+      int carry = 0;
+
+
+      for (int i = INTSIZ - 1; i >= 0; i--)
+      {
+         int tmp = intArray[i] + biref.intArray[i] + carry;
+
+	 bsum.intArray[i] = tmp % 10;
+
+	 carry = tmp/10;
+      }
+      return bsum;
+   }
+   public BigInteger subtract(BigInteger biref)
+   {
+      BigInteger bdifference = new BigInteger();
+      int num1, num2;
+      boolean borrow = false;
+
+      for (int i = INTSIZ - 1; i >= 0; i--)
+      {
+         num1 = intArray[i];
+	 num2 = biref.intArray[i];
+	 if (borrow == true)
+	 {
+	    num1 = num1 - 1;
+            borrow = false;
+	 }
+         if (num2 > num1)
+	 {
+	    borrow = true; 
+	    num1 = num1 + 10;
+	 }
+	 bdifference.intArray[i] = num1 - num2;
+      }
+      return bdifference;
+   }
+   public BigInteger multiply(BigInteger biref)
+   {
+      BigInteger bproduct = new BigInteger();
+      BigInteger badd = new BigInteger();
+
+      int carry = 0, j, tmp = 0;
+
+      for (int i = INTSIZ - 1; i >=0; i--)
+      {
+         for (j = INTSIZ - 1; j >=0; j--)
+	 {
+	    tmp = intArray[i] * biref.intArray[j] + carry;
+
+	    badd.intArray[j] = tmp % 10;
+
+	    carry = tmp/10;
+	 }
+         badd.shift(INTSIZ-1-i);
+	 bproduct = bproduct.add(badd);
+      }
+      return bproduct;
+   }
+   public void shift(int n)
+   {
+      for (int j = 0; j < n; j++)
+      {
+         for (int i = 1; i < INTSIZ; i++)
+	 {
+	    intArray[i-1] = intArray[i];
+	 }
+	 intArray[INTSIZ - 1] = 0;
+      }
+   }
+}
+
+OUTPUT: =====================================
+input the first BigInteger:
+enter the BigInteger: (do not pad with zeros); input the second BigInteger:
+enter the BigInteger: (do not pad with zeros); BigInt #1:  0000000000000000000001001
+BigInt #2:  0000000000000000000000005
+            =========================
+SUM:        0000000000000000000001006
+
+BigInt #1:  0000000000000000000001001
+BigInt #2:  0000000000000000000000005
+            =========================
+DIFFERENCE: 0000000000000000000000996
+
+BigInt #1:  0000000000000000000001001
+BigInt #2:  0000000000000000000000005
+            =========================
+PRODUCT:    0000000000000000000005005
+
+input the first BigInteger:
+enter the BigInteger: (do not pad with zeros); input the second BigInteger:
+enter the BigInteger: (do not pad with zeros); BigInt #1:  0000000000000000000000456
+BigInt #2:  0000000000000000000000123
+            =========================
+SUM:        0000000000000000000000579
+
+BigInt #1:  0000000000000000000000456
+BigInt #2:  0000000000000000000000123
+            =========================
+DIFFERENCE: 0000000000000000000000333
+
+BigInt #1:  0000000000000000000000456
+BigInt #2:  0000000000000000000000123
+            =========================
+PRODUCT:    0000000000000000000056088
+
+DUE DATE: Feb 17 10:30 am   ================================================
+total 56
+drwxrwxr-x 2 vertefeuille vertefeuille 4096 2011-02-19 13:37 .
+drwxrwx--- 6 vertefeuille vertefeuille 4096 2011-02-08 10:32 ..
+-rw-rw-r-- 1 vertefeuille vertefeuille 2240 2011-02-15 10:20 BigInteger.class
+-rw-rw-r-- 1 vertefeuille vertefeuille 2270 2011-02-10 15:45 BigInteger.java
+-rw-rw-r-- 1 vertefeuille vertefeuille 1164 2011-02-15 10:20 Lab3.class
+-rw-rw-r-- 1 vertefeuille vertefeuille 1364 2011-02-09 20:21 Lab3.java
+-rw-r--r-- 1 root         root         3082 2011-02-19 13:37 README.MCU
+===========================================================================
+    *****    All students are required to read and understand   *****
+    *****    the Attendance, Homework, and Late Work Policies   *****
+    *****    which can be found at http://cs.actx.edu/~usnick   *****
+===========================================================================
+Instructor Comments:
+
+Super job!
+
+Grade:  100

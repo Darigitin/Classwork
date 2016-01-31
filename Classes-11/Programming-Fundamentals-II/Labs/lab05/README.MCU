@@ -1,0 +1,232 @@
+vertefeuille
+===========================================================================
+NOTE:
+
+To find my comments in this file, which contains both your
+program and its output, search for the string "MCU".
+
+Your grade is at the bottom of this file.
+===========================================================================
+
+Lab5.java SOURCE: ============================
+class ST
+{
+   String star[];
+   int numTokens;
+   int index = 0;
+
+   public ST(String s, String d)
+   {
+      star = new String[50];
+      int tokenStart = 0, tokenEnd = 0;
+      for (int i = 0; (i+1) < s.length(); i++)
+      {
+         if (isDelim(s.substring(i, i+1), d) && !isDelim(s.substring(i+1, i+2), d))
+         {
+            tokenStart = i+1;
+         }
+         if (!isDelim(s.substring(i, i+1), d) && isDelim(s.substring(i+1, i+2), d))
+         {
+            tokenEnd = i+1; 
+         }
+	 if (tokenStart < tokenEnd)
+	 {
+	   star[numTokens] = s.substring(tokenStart, tokenEnd);
+	   numTokens++;
+           tokenStart = 0;
+           tokenEnd = 0;
+	 }
+      }         
+      if (tokenStart > tokenEnd)
+      {
+      star[numTokens] = s.substring(tokenStart);
+      numTokens++;
+      tokenStart = 0;
+      tokenEnd = 0;
+      }
+   }
+
+
+   public ST(String s)
+   {
+      this(s, " ");
+   }
+
+   public boolean isDelim(String a, String b)
+   {
+      if(b.indexOf(a) != -1)
+      {
+         return true;
+      }
+      else
+      {
+         return false;
+      }
+   }
+   public int countTokens()
+   {
+      return (numTokens - index);
+   }
+
+   public boolean hasMoreTokens()
+   {
+      return (numTokens > index);
+   }
+   
+   public String nextToken()
+   {
+      return star[index++]; 
+   }
+
+}
+
+public class Lab5
+{
+
+    public static void main(String argv[])
+    {
+        String str;
+
+    //1)
+        str = "Hello world";
+        ST stok= new ST(str);
+        
+        System.out.println(str);
+
+        while (stok.hasMoreTokens())
+        {
+            System.out.println("#tokens = " + stok.countTokens());
+            System.out.println("token: " + stok.nextToken());
+        }
+        System.out.println("#tokens = " + stok.countTokens());
+        System.out.println("\n\n");
+
+    //2)
+        str = "    Hello    world   ";
+        stok= new ST(str);
+        
+        System.out.println(str);
+
+        while (stok.hasMoreTokens())
+        {
+            System.out.println("#tokens = " + stok.countTokens());
+            System.out.println("token: " + stok.nextToken());
+        }
+        System.out.println("#tokens = " + stok.countTokens());
+        System.out.println("\n\n");
+
+    //3)
+        str = "root:x:0:0:root:/root:/bin/bash";
+        stok = new ST(str, ":");
+
+        System.out.println(str);
+
+        System.out.println("username = " + stok.nextToken());
+        System.out.println("password = " + stok.nextToken());
+        System.out.println("userid   = " + stok.nextToken());
+        System.out.println("groupid  = " + stok.nextToken());
+        System.out.println("comment  = " + stok.nextToken());
+        System.out.println("home dir = " + stok.nextToken());
+        System.out.println("shell    = " + stok.nextToken());
+        System.out.println("\n\n");
+
+    //4)
+        str = "Hello-world.It is!a nice day,today";
+        stok= new ST(str,"-.!, ");
+        
+        System.out.println(str);
+
+        while (stok.hasMoreTokens())
+        {
+            System.out.println("#tokens = " + stok.countTokens());
+            System.out.println("token: " + stok.nextToken());
+        }
+        System.out.println("#tokens = " + stok.countTokens());
+
+    }
+}
+
+
+OUTPUT: =====================================
+Hello world
+#tokens = 2
+token: Hello
+#tokens = 1
+token: world
+#tokens = 0
+
+
+
+    Hello    world   
+#tokens = 2
+token: Hello
+#tokens = 1
+token: world
+#tokens = 0
+
+
+
+root:x:0:0:root:/root:/bin/bash
+username = root
+password = x
+userid   = 0
+groupid  = 0
+comment  = root
+home dir = /root
+shell    = /bin/bash
+
+
+
+Hello-world.It is!a nice day,today
+#tokens = 8
+token: Hello
+#tokens = 7
+token: world
+#tokens = 6
+token: It
+#tokens = 5
+token: is
+#tokens = 4
+token: a
+#tokens = 3
+token: nice
+#tokens = 2
+token: day
+#tokens = 1
+token: today
+#tokens = 0
+DUE DATE: Mar 11 7:00 am   ================================================
+total 52
+drwxrwxr-x 2 vertefeuille vertefeuille 4096 2011-03-16 11:09 .
+drwxrwx--- 9 vertefeuille vertefeuille 4096 2011-03-10 10:33 ..
+-rw-rw-r-- 1 vertefeuille vertefeuille 1808 2011-03-08 17:01 Lab5.class
+-rw-rw-r-- 1 vertefeuille vertefeuille 3187 2011-03-08 17:01 Lab5.java
+-rw-r--r-- 1 root         root         4226 2011-03-16 11:09 README.MCU
+-rw-rw-r-- 1 vertefeuille vertefeuille 1296 2011-03-08 17:01 ST.class
+===========================================================================
+    *****    All students are required to read and understand   *****
+    *****    the Attendance, Homework, and Late Work Policies   *****
+    *****    which can be found at http://cs.actx.edu/~usnick   *****
+===========================================================================
+Instructor Comments:
+
+Good job.
+
+One nerdy improvement:  Any time you have code that does something
+like this:
+
+    if (condition)
+        return true;
+    else
+        return false;
+
+you can shorten it to just:
+
+    return (condition);
+
+Think about it.  This would allow your isDelim method to also be just
+one line long!
+
+Grade:  100
+
+

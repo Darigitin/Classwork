@@ -1,0 +1,55 @@
+vertefeuille
+===========================================================================
+NOTE:
+
+To find my comments in this file, which contains both your
+program and its output, search for the string "MCU".
+
+Your grade is at the bottom of this file.
+===========================================================================
+
+OUTPUT: =====================================
+[root@cs lab4]# lab4
+reml 0 0
+MAIN: cmd = reml, index = 0, data = 0
+-1
+Segmentation fault
+
+DUE DATE: Oct 12 7:00am   ================================================
+total 60
+drwxrwxr-x. 2 vertefeuille vertefeuille  4096 Oct 13 08:19 .
+drwxrwx---. 8 vertefeuille vertefeuille  4096 Oct 11 10:38 ..
+-rw-rw-r--. 1 vertefeuille vertefeuille   804 Oct  9 20:41 data
+-rw-rw-r--. 1 vertefeuille vertefeuille   108 Oct 11 07:36 data2
+-rw-rw-r--. 1 vertefeuille vertefeuille  5226 Oct 11 14:57 diff
+-rw-rw-r--. 1 vertefeuille vertefeuille  4354 Oct  4 11:33 lab3.cpp
+-rwxrwxr-x. 1 vertefeuille vertefeuille 16113 Oct 11 21:03 lab4
+-rw-rw-r--. 1 vertefeuille vertefeuille  4358 Oct 12 19:11 lab4.cpp
+-rw-r--r--. 1 root         root           844 Oct 13 08:19 README.MCU
+===========================================================================
+    *****    All students are required to read and understand   *****
+    *****    the Attendance, Homework, and Late Work Policies   *****
+    *****    which can be found at http://cs.actx.edu/~usnick   *****
+===========================================================================
+Instructor Comments:
+
+Grade:  incomplete
+
+October 18 regrade ==========================================
+
+Looks much better (ran to completion).
+
+One teensy nit is when I called "getup" with the user pointer
+having not been set, I got the following output:
+
+MAIN: cmd = getup, index = 0, data = 0
+getup returns: 1323188544
+
+A better return value would have been -1.  Or zero.  Or maybe
+999999999.  Basically, anything but 1323188544  ;)
+
+-1pt
+
+Grade:  99 - 10pts (late/regrade) = 89
+
+

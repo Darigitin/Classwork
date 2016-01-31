@@ -1,0 +1,226 @@
+MAIN: cmd = add, i = 0, d = 0
+MAIN: cmd = add, i = 1, d = 0
+MAIN: cmd = add, i = 2, d = 0
+MAIN: cmd = add, i = 3, d = 0
+MAIN: cmd = add, i = 4, d = 0
+MAIN: cmd = add, i = 5, d = 0
+MAIN: cmd = add, i = 6, d = 0
+MAIN: cmd = add, i = 7, d = 0
+MAIN: cmd = add, i = 8, d = 0
+MAIN: cmd = add, i = 9, d = 0
+MAIN: cmd = add, i = 10, d = 0
+MAIN: cmd = add, i = 11, d = 0
+MAIN: cmd = add, i = 12, d = 0
+MAIN: cmd = add, i = 13, d = 0
+MAIN: cmd = add, i = 14, d = 0
+MAIN: cmd = add, i = 15, d = 0
+MAIN: cmd = add, i = 16, d = 0
+MAIN: cmd = add, i = 17, d = 0
+MAIN: cmd = add, i = 18, d = 0
+MAIN: cmd = add, i = 19, d = 0
+MAIN: cmd = add, i = 20, d = 0
+MAIN: cmd = add, i = 21, d = 0
+MAIN: cmd = add, i = 22, d = 0
+MAIN: cmd = add, i = 23, d = 0
+MAIN: cmd = add, i = 24, d = 0
+MAIN: cmd = add, i = 25, d = 0
+MAIN: cmd = add, i = 26, d = 0
+MAIN: cmd = add, i = 27, d = 0
+MAIN: cmd = add, i = 28, d = 0
+MAIN: cmd = add, i = 29, d = 0
+MAIN: cmd = add, i = 30, d = 0
+MAIN: cmd = add, i = 31, d = 0
+MAIN: cmd = add, i = 32, d = 0
+MAIN: cmd = add, i = 33, d = 0
+MAIN: cmd = add, i = 34, d = 0
+MAIN: cmd = add, i = 35, d = 0
+MAIN: cmd = add, i = 36, d = 0
+MAIN: cmd = add, i = 37, d = 0
+MAIN: cmd = add, i = 38, d = 0
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 39, first = 0, last = 0)
+    DUMP:   head = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+
+MAIN: cmd = rem, i = 38, d = 0
+MAIN: cmd = rem, i = 37, d = 0
+MAIN: cmd = rem, i = 36, d = 0
+MAIN: cmd = rem, i = 35, d = 0
+MAIN: cmd = rem, i = 34, d = 0
+MAIN: cmd = rem, i = 33, d = 0
+MAIN: cmd = rem, i = 32, d = 0
+MAIN: cmd = rem, i = 31, d = 0
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 31, first = 0, last = 0)
+    DUMP:   head = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+
+MAIN: cmd = rem, i = 30, d = 0
+MAIN: cmd = rem, i = 29, d = 0
+MAIN: cmd = rem, i = 28, d = 0
+MAIN: cmd = rem, i = 27, d = 0
+MAIN: cmd = rem, i = 26, d = 0
+MAIN: cmd = rem, i = 25, d = 0
+MAIN: cmd = rem, i = 24, d = 0
+MAIN: cmd = rem, i = 23, d = 0
+MAIN: cmd = rem, i = 22, d = 0
+MAIN: cmd = rem, i = 21, d = 0
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 21, first = 0, last = 0)
+    DUMP:   head = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+
+MAIN: cmd = rem, i = 20, d = 0
+MAIN: cmd = rem, i = 19, d = 0
+MAIN: cmd = rem, i = 18, d = 0
+MAIN: cmd = rem, i = 17, d = 0
+MAIN: cmd = rem, i = 16, d = 0
+MAIN: cmd = rem, i = 15, d = 0
+MAIN: cmd = rem, i = 14, d = 0
+MAIN: cmd = rem, i = 13, d = 0
+MAIN: cmd = rem, i = 12, d = 0
+MAIN: cmd = rem, i = 11, d = 0
+MAIN: cmd = rem, i = 10, d = 0
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 10, first = 0, last = 0)
+    DUMP:   head = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+
+MAIN: cmd = rem, i = 9, d = 0
+MAIN: cmd = rem, i = 8, d = 0
+MAIN: cmd = rem, i = 7, d = 0
+MAIN: cmd = rem, i = 6, d = 0
+MAIN: cmd = rem, i = 5, d = 0
+MAIN: cmd = rem, i = 4, d = 0
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 4, first = 0, last = 0)
+    DUMP:   head = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+
+MAIN: cmd = rem, i = 3, d = 0
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 3, first = 0, last = 0)
+    DUMP:   head = : 0
+    DUMP:   data = : 0
+    DUMP:   data = : 0
+
+MAIN: cmd = rem, i = 2, d = 0
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 2, first = 0, last = 0)
+    DUMP:   head = : 0
+    DUMP:   data = : 0
+
+MAIN: cmd = reml, i = 1, d = 0
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 1, first = 0, last = 0)
+    DUMP:   head = : 0
+
+MAIN: cmd = rem, i = 0, d = 0
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 0, first = -1, last = -1)
+    DUMP: head = NULL
+
+MAIN: cmd = reml, i = 0, d = 0
+-1
+MAIN: cmd = remf, i = 0, d = 0
+-1
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 0, first = -1, last = -1)
+    DUMP: head = NULL
+
+MAIN: cmd = quit, i = 0, d = 0

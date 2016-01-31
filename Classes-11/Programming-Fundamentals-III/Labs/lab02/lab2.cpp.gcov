@@ -1,0 +1,258 @@
+        -:    0:Source:lab2.cpp
+        -:    0:Graph:lab2.gcno
+        -:    0:Data:lab2.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include <iostream>
+        -:    2:#include <cstdlib>
+        -:    3:#include <string>
+        -:    4:
+        -:    5:using namespace std;
+        -:    6:
+        -:    7:class node
+        -:    8:{
+        -:    9:  public:
+        -:   10:    typedef int data_t;
+        -:   11:
+       19:   12:    node(data_t d) { next = NULL; data = d; }
+        -:   13:
+        -:   14:    node *next;
+        -:   15:    data_t data;
+        -:   16:};
+        -:   17:
+        -:   18:
+        -:   19:class linked_list
+        -:   20:{
+        -:   21:  private:
+        -:   22:    node *head;
+        -:   23:
+        -:   24:  public:
+        -:   25:
+        1:   26:    linked_list()
+        -:   27:    {
+        1:   28:        head = NULL;
+        1:   29:    }
+        -:   30:
+       89:   31:    int size()
+        -:   32:    {
+       89:   33:       node *tptr = head;
+       89:   34:       int c = 0;
+      388:   35:       while (tptr)
+        -:   36:       {
+      210:   37:          tptr = tptr->next;
+      210:   38:	  c++;
+        -:   39:       }
+       89:   40:       return c;
+        -:   41:    }
+        -:   42:
+       21:   43:    void add(int n, node::data_t d)
+        -:   44:    {
+       21:   45:       if (n>size())
+        -:   46:       {
+        2:   47:          cout << -1 << endl;
+        -:   48:       }
+       19:   49:       else if (n == 0)
+        -:   50:       {
+        9:   51:          node *tptr = new node(d);
+        9:   52:          tptr->next = head;
+        9:   53:          head = tptr;
+        -:   54:       }
+       10:   55:       else if (n < size())
+        -:   56:       {
+        7:   57:         node *tptr = head;
+        7:   58:	 node *tptr2 = new node(d);
+        7:   59:         n = n - 1;
+       14:   60:	 for (int c = 0; c<n && tptr->next != NULL; c++)
+        -:   61:	 {
+        7:   62:	    tptr = tptr->next;
+        -:   63:	 }
+        7:   64:	 tptr2->next = tptr->next;
+        7:   65:	 tptr->next = tptr2;
+        -:   66:	 
+        -:   67:       }
+        -:   68:       else 
+        -:   69:       {
+        3:   70:          if (head)
+        -:   71:          {
+        3:   72:             node *tptr = head;
+        8:   73:             while (tptr->next)
+        -:   74:             {
+        2:   75:                tptr = tptr->next;
+        -:   76:             }
+        3:   77:             tptr->next = new node(d);
+        -:   78:          }
+        -:   79:          else
+        -:   80:          {
+    #####:   81:             head = new node(d);
+        -:   82:          }
+        -:   83:       }
+       21:   84:    }
+        4:   85:    void add_last(node::data_t d)
+        -:   86:    {
+        4:   87:       add(size(), d);
+        4:   88:    }
+        -:   89:
+        4:   90:    void add_first(node::data_t d)
+        -:   91:    {
+        4:   92:       add(0, d);
+        4:   93:    }
+        -:   94:
+        2:   95:    node::data_t get(int n)
+        -:   96:    {
+        2:   97:       node *tptr = head;
+        2:   98:       if (n > size() || head == NULL)
+        -:   99:       {
+        1:  100:          return -1;
+        -:  101:       }
+        -:  102:       else 
+        -:  103:       {  
+        2:  104:          for (int c = 0; c<n && tptr->next != NULL; c++)
+        -:  105:          {
+        1:  106:             tptr = tptr->next;
+        -:  107:          }
+        1:  108:          return tptr->data;
+        -:  109:       }
+        -:  110:    }
+        -:  111:
+        -:  112:
+       25:  113:    node::data_t get_first()
+        -:  114:    {
+       25:  115:       if (head != NULL)
+        -:  116:       {
+       19:  117:          return head->data;
+        -:  118:       }
+        6:  119:       return -1;
+        -:  120:    }
+        -:  121:
+       25:  122:    node::data_t get_last()
+        -:  123:    {
+       25:  124:       node *tptr = head;
+       25:  125:       if (head != NULL)
+        -:  126:       {
+       68:  127:          while (tptr->next)
+        -:  128:          {
+       30:  129:             tptr = tptr->next;
+        -:  130:          }
+       19:  131:          return tptr->data;
+        -:  132:       }
+        6:  133:       return -1;
+        -:  134:    }
+        -:  135:
+       21:  136:    void remove(int n)
+        -:  137:    {
+       21:  138:       if (n > size() || head == NULL)
+        -:  139:       {
+        2:  140:          cout << -1 << endl;
+        -:  141:       }
+       19:  142:       else if(n == 0 || size() == 1)
+        -:  143:       {
+       16:  144:          if (head->next)
+        -:  145:	  {
+       13:  146:             node *tptr = head;
+       13:  147:             head = head->next;   
+        -:  148:	  }
+        -:  149:          else 
+        -:  150:          {
+        3:  151:             delete head;
+        3:  152:             head = NULL;
+        -:  153:          }
+        -:  154:       }
+        3:  155:       else if (n < size())
+        -:  156:       {
+        1:  157:          node *tptr = head;
+        1:  158:          n--;
+        -:  159:
+        2:  160:	  for (int c = 0; c<n && tptr->next != NULL; c++)
+        -:  161:	  {
+        1:  162:             tptr = tptr->next;
+        -:  163:	  }
+        1:  164:          node *tptr2 = tptr->next;
+        1:  165:          tptr->next = tptr2->next;
+        1:  166:          delete tptr2;
+        -:  167:       }
+        -:  168:       else 
+        -:  169:       {
+        2:  170:          node *tptr = head;
+        2:  171:          n--;
+        4:  172:          for (int c = 1; c<n && tptr->next != NULL; c++)
+        -:  173:          {
+        2:  174:	     tptr = tptr->next;
+        -:  175:          }
+        2:  176:	  delete tptr->next;
+        2:  177:          tptr->next = NULL;
+        -:  178:       } 
+        -:  179:  
+       21:  180:    }
+        -:  181:
+        2:  182:    void remove_first()
+        -:  183:    {
+        2:  184:       remove(0);
+        2:  185:    }
+        -:  186:
+        2:  187:    void remove_last()
+        -:  188:    {
+        2:  189:       remove(size());
+        2:  190:    }
+        -:  191:
+       23:  192:    void dump()
+        -:  193:       {
+        -:  194:        node *tptr;
+        -:  195:
+       23:  196:        cout << "    DUMP: (size = " << size() << ", first = " << get_first() << ", last = " << get_last() << ")\n";
+        -:  197:
+       23:  198:        if (head == NULL) {
+        5:  199:            cout << "    DUMP: head = NULL\n\n";
+        5:  200:            return;
+        -:  201:        }
+        -:  202:
+       18:  203:        tptr = head;
+        -:  204:
+       18:  205:        cout << "    DUMP:   head = : " << tptr->data << endl;
+       64:  206:        while (tptr->next != NULL) {
+       28:  207:            tptr = tptr->next;
+       28:  208:        cout << "    DUMP:   data = : " << tptr->data << endl;
+        -:  209:        }
+       18:  210:        cout << endl;
+        -:  211:      }
+        -:  212:};
+        -:  213:
+        -:  214:
+        1:  215:int main(void)
+        -:  216:{
+        1:  217:    linked_list ll;
+        1:  218:    string cmd;
+        -:  219:    int i, d;
+        -:  220:
+       71:  221:    while (true) {
+       72:  222:        cin >> cmd >> i >> d;
+        -:  223:
+       72:  224:        cout << "MAIN: cmd = " << cmd << ", i = " << i
+      144:  225:             << ", d = " << d << endl;
+        -:  226:
+       72:  227:        if (cmd == "add")
+       13:  228:            ll.add(i, d);
+       59:  229:        else if (cmd == "addf")
+        4:  230:            ll.add_first(d);
+       55:  231:        else if (cmd == "addl")
+        4:  232:            ll.add_last(d);
+       51:  233:        else if (cmd == "rem")
+       17:  234:            ll.remove(i);
+       34:  235:        else if (cmd == "remf")
+        2:  236:            ll.remove_first();
+       32:  237:        else if (cmd == "reml")
+        2:  238:            ll.remove_last();
+       30:  239:        else if (cmd == "get") {
+        2:  240:            d = ll.get(i);
+        2:  241:            cout << "get returns: " << d << endl;
+       28:  242:        } else if (cmd == "getf") {
+        2:  243:            d = ll.get_first();
+        2:  244:            cout << "getf returns: " << d << endl;
+       26:  245:        } else if (cmd == "getl") {
+        2:  246:            d = ll.get_last();
+        2:  247:            cout << "getl returns: " << d << endl;
+       24:  248:        } else if (cmd == "dump")
+       23:  249:            ll.dump();
+        1:  250:        else if (cmd == "quit")
+        1:  251:            exit(0);
+        -:  252:    }
+        3:  253:}

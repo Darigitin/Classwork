@@ -1,0 +1,16 @@
+put 1
+dump 0
+put 2
+dump 0
+put 3
+dump 0
+put 4
+dump 0
+put 5
+dump 0
+put 0
+dump 0
+pop 0
+dump 0
+quit 1
+

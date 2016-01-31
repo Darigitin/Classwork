@@ -1,0 +1,491 @@
+        -:    0:Source:lab7.cpp
+        -:    0:Graph:lab7.gcno
+        -:    0:Data:lab7.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include <iostream>
+        -:    2:#include <cstdlib>
+        -:    3:#include <string>
+        -:    4:
+        -:    5:using namespace std;
+        -:    6:
+        1:    7:class node {
+        -:    8:  public:
+        -:    9:    int key;
+        -:   10:    string value;
+        -:   11:
+        -:   12:    node *left;
+        -:   13:    node *right;
+        -:   14:
+       21:   15:    node(int k, string v)
+       21:   16:    {
+       21:   17:        key = k;
+       21:   18:        value = v;
+        -:   19:
+       21:   20:        left = NULL;
+       21:   21:        right = NULL;
+       21:   22:    }
+        -:   23:};
+        -:   24:
+        -:   25:
+        -:   26:class bst {
+        -:   27:  private:
+        -:   28:
+        -:   29:    node *root;
+        -:   30:
+        -:   31:  public:
+        1:   32:    bst()
+        -:   33:    {
+        1:   34:        root = NULL;
+        1:   35:    }
+       21:   36:    void put(int k, string v)
+        -:   37:    {
+       21:   38:       if (root == NULL)
+        -:   39:       {
+        1:   40:          root = new node(k, v);
+        -:   41:       }
+       20:   42:       else if (root)
+        -:   43:       {
+       20:   44:          node* tptr = root;
+       20:   45:          int f = 0;
+       20:   46:          if (tptr->left || tptr->right)
+        -:   47:          {
+       19:   48:             f = 1;
+        -:   49:          }
+      105:   50:          while (f)
+        -:   51:	  {
+       65:   52:	     if (tptr->left && k < tptr->key)
+        -:   53:	     {
+       22:   54:	        tptr = tptr->left;
+        -:   55:	     }
+       43:   56:	     else if (tptr->right && k > tptr->key)
+        -:   57:	     {
+       24:   58:	        tptr = tptr->right;
+        -:   59:	     }
+        -:   60:             else 
+        -:   61:             {
+       19:   62:                f = 0;
+        -:   63:             }
+        -:   64:	  }
+       20:   65:	  if (tptr->key == k)
+        -:   66:	  {
+    #####:   67:	     tptr->key = k;
+    #####:   68:	     tptr->value = v;
+        -:   69:	  }
+       20:   70:	  else if (k < tptr->key)
+        -:   71:	  {
+       11:   72:	     tptr->left = new node(k, v);
+        -:   73:	  }
+        9:   74:	  else if (k > tptr->key)
+        -:   75:	  {
+        9:   76:	     tptr->right = new node(k, v);
+        -:   77:	  }
+        -:   78:       }
+       21:   79:    }
+       40:   80:    void rdump(node* tptr, int f, int level)
+        -:   81:    {
+       40:   82:       if (f == 0)
+        -:   83:       {
+       40:   84:	  if (tptr->left)
+        -:   85:	  {
+       21:   86:	     rdump(tptr->left, f, level + 1);
+        -:   87:	  }
+       40:   88:          cout << "DUMP: index = " << tptr->key << ", data = " << tptr->value << ", level = " << level;
+       40:   89:          if (tptr->left && tptr->right)
+        -:   90:	  {
+       10:   91:	     cout << ", lcld = " << tptr->left->key << ", rcld = " << tptr->right->key << endl;
+        -:   92:	  }
+       30:   93:	  else if (tptr->left)
+        -:   94:	  {
+       11:   95:	     cout << ", lcld = " << tptr->left->key << endl;
+        -:   96:	  }
+       19:   97:	  else if (tptr->right)
+        -:   98:	  {
+        7:   99:	     cout << ", rcld = " << tptr->right->key << endl;
+        -:  100:	  }
+        -:  101:	  else
+        -:  102:	  {
+       12:  103:	     cout << endl;
+        -:  104:	  }
+       40:  105:          if (tptr->right)
+        -:  106:          {
+       17:  107:             rdump(tptr->right, f, level + 1);
+        -:  108:          }
+        -:  109:       }
+    #####:  110:       else if (f == 1)
+        -:  111:       {
+    #####:  112:          if (tptr->right)
+        -:  113:	  {
+    #####:  114:	     rdump(tptr->right, f, level + 1);
+        -:  115:	  }
+    #####:  116:	  cout << "DUMP: index = " << tptr->key << ", data = " << tptr->value << ", level = " << level;
+    #####:  117:	  if (tptr->left && tptr->right)
+        -:  118:	  {
+    #####:  119:	     cout << ", lcld = " << tptr->left->key << ", rcld = " << tptr->right->key << endl;
+        -:  120:	  }
+    #####:  121:	  else if (tptr->left)
+        -:  122:	  {
+    #####:  123:	     cout << ", lcld = " << tptr->left->key << endl;
+        -:  124:	  }
+    #####:  125:	  else if (tptr->right)
+        -:  126:	  {
+    #####:  127:	     cout << ", rcld = " << tptr->right->key << endl;
+        -:  128:	  }
+        -:  129:	  else
+        -:  130:	  {
+    #####:  131:	     cout << endl;
+        -:  132:	  }
+    #####:  133:	  if (tptr->left)
+        -:  134:	  {
+    #####:  135:	     rdump(tptr->left, f, level + 1);
+        -:  136:	  }
+        -:  137:       }
+       40:  138:   }
+        2:  139:   void dump()
+        -:  140:   {
+        2:  141:      if (root)
+        -:  142:      {
+        2:  143:         cout << "DUMP: (root node = " << root->key << ")" << endl;
+        2:  144:         rdump(root, 0, 1);
+        -:  145:      }
+        -:  146:      else
+        -:  147:      {
+    #####:  148:         cout << "DUMP: (root node = " << -1 << ")" << endl;
+        -:  149:      }
+        2:  150:   }
+    #####:  151:   void dump_rev()
+        -:  152:   {
+    #####:  153:      if (root)
+        -:  154:      {
+    #####:  155:         cout << "DUMP: (root node = " << root->key << ")" << endl;
+    #####:  156:         rdump(root, 1, 1);
+        -:  157:      }
+        -:  158:      else
+        -:  159:      {
+    #####:  160:         cout << "DUMP: (root node = " << -1 << ")" << endl;
+        -:  161:      }
+    #####:  162:   }
+    #####:  163:   string non_recursive_get(int k)
+        -:  164:   {
+    #####:  165:      if (root)
+        -:  166:      {
+    #####:  167:         node *tptr = root;
+    #####:  168:         int f = 0;
+    #####:  169:         if (tptr->left || tptr->right)
+        -:  170:         {
+    #####:  171:            f = 1;
+        -:  172:         }
+    #####:  173:         cout << "GET: examining node(s): ";
+    #####:  174:         while (f)
+        -:  175:         {
+    #####:  176:            cout << tptr->value << " ";
+    #####:  177:            if (tptr->left && k < tptr->key)
+        -:  178:	    {
+    #####:  179:	       tptr = tptr->left;
+        -:  180:	    }
+    #####:  181:	    else if (tptr->right && k > tptr->key)
+        -:  182:	    { 
+    #####:  183:	       tptr = tptr->right;
+        -:  184:	    }
+        -:  185:	    else
+        -:  186:	    {
+    #####:  187:	       cout << endl;
+    #####:  188:	       f = 0;
+        -:  189:	    }
+        -:  190:         }
+    #####:  191:         if (tptr->key == k)
+        -:  192:         {
+    #####:  193:            return tptr->value;
+        -:  194:         }
+        -:  195:         else
+        -:  196:         {
+    #####:  197:            return "-1";
+        -:  198:         }
+        -:  199:      }
+        -:  200:      else
+        -:  201:      {
+        -:  202:         
+        -:  203:      }
+        -:  204:      
+    #####:  205:   }
+    #####:  206:   string rget(node *tptr, int k, string c, string r)
+        -:  207:   {
+    #####:  208:      if (tptr->left && k < tptr->key)
+        -:  209:      {
+    #####:  210:         r = rget(tptr->left, k, c + " " + tptr->value + " ", r);
+        -:  211:      }
+    #####:  212:      else if (tptr->right && k > tptr->key)
+        -:  213:      {
+    #####:  214:         r = rget(tptr->right, k, c + " " + tptr->value + " ", r);
+        -:  215:      }
+    #####:  216:      if (tptr->key == k)
+        -:  217:      {
+    #####:  218:         cout << "GET: examining node(s): " << c + " " + tptr->value << endl;
+    #####:  219:	 r = tptr->value;
+        -:  220:      }
+    #####:  221:      return r;
+        -:  222:
+        -:  223:   }
+    #####:  224:   string recursive_get(int k)
+        -:  225:   {
+    #####:  226:      if (root)
+        -:  227:      {
+    #####:  228:         return rget(root, k, "", "-1");
+        -:  229:      }
+        -:  230:      else
+        -:  231:      {
+    #####:  232:         return "-1";
+        -:  233:      }
+        -:  234:   }
+        1:  235:   void remove (int k)
+        -:  236:   {
+        1:  237:      if (root)
+        -:  238:      {
+        1:  239:         node* tptr = root;
+        1:  240:	 int f = 0;
+        1:  241:	 if (tptr->left || tptr->right)
+        -:  242:	 {
+        1:  243:	    f = 1;
+        -:  244:	 }
+        4:  245:         while(f)
+        -:  246:	 {
+        2:  247:	    if (k < tptr->key && tptr->left && k != tptr->left->key)
+        -:  248:	    {
+        1:  249:	       tptr = tptr->left;
+        -:  250:	    }
+        1:  251:	    else if (k > tptr->key && tptr->right && k != tptr->right->key)
+        -:  252:	    {
+    #####:  253:	       tptr = tptr->right;
+        -:  254:	    }
+        -:  255:	    else
+        -:  256:	    {
+        1:  257:	       f = 0;
+        -:  258:	    }
+        -:  259:	 }
+        1:  260:         cout << tptr->key << endl;
+        1:  261:         if (k < tptr->key && tptr->left)
+        -:  262:         {
+    #####:  263:	    if (tptr->left->left && tptr->left->right)
+        -:  264:	    {
+    #####:  265:	       node* tptr2 = tptr->left->left;
+    #####:  266:	       if (tptr2->right)
+        -:  267:	       {
+    #####:  268:	          while (tptr->right->right)
+        -:  269:		  {
+    #####:  270:		     tptr2 = tptr2->right;
+        -:  271:		  }
+        -:  272:	       }
+    #####:  273:	       if (tptr2->right)
+        -:  274:	       {
+    #####:  275:	          tptr->left->key = tptr2->right->key;
+    #####:  276:		  tptr->left->value = tptr2->right->value;
+    #####:  277:		  delete tptr2->right;
+    #####:  278:		  tptr2->right = NULL;
+        -:  279:	       }
+        -:  280:	       else
+        -:  281:	       {
+    #####:  282:	          tptr->left->key = tptr2->key;
+    #####:  283:		  tptr->left->value = tptr2->value;
+    #####:  284:		  delete tptr2;
+    #####:  285:		  tptr->left->left = NULL;
+    #####:  286:	       }
+        -:  287:	    }
+    #####:  288:	    else if (tptr->left->left)
+        -:  289:	    {
+    #####:  290:	       node* tptr2 = tptr->left->left;
+    #####:  291:	       if (tptr2->left && tptr2->right)
+        -:  292:	       {
+    #####:  293:	          node* tptr3 = tptr2->left;
+    #####:  294:	          if (tptr3->right)
+        -:  295:	          {
+    #####:  296:	             while (tptr3->right->right)
+        -:  297:	             {
+    #####:  298:		        tptr3 = tptr3->right;
+        -:  299:		     }
+        -:  300:	          }
+    #####:  301:                  if (tptr3->right)
+        -:  302:	          {
+    #####:  303:	             tptr2->key = tptr3->right->key;
+    #####:  304:		     tptr2->value = tptr3->right->value;
+    #####:  305:	             delete tptr3->right;
+    #####:  306:	             tptr3->right = NULL;
+        -:  307:                  }
+        -:  308:	          else
+        -:  309:	          {
+    #####:  310:	             tptr2->key = tptr3->key;
+    #####:  311:		     tptr2->value = tptr3->value;
+    #####:  312:		     if (tptr3->left)
+        -:  313:		     {
+    #####:  314:		        tptr2->left = tptr3->left;
+        -:  315:		     }
+        -:  316:		     else
+        -:  317:		     {
+    #####:  318:		        tptr2->left = NULL;
+        -:  319:		     }
+    #####:  320:		     delete tptr3;
+        -:  321:	          }
+        -:  322:	       }
+        -:  323:	    }
+    #####:  324:	    else if (tptr->left->right)
+        -:  325:	    {
+    #####:  326:	       node* tptr2 = tptr->left;
+    #####:  327:	       tptr->left = tptr2->right;
+    #####:  328:	       delete tptr2;
+        -:  329:	    }
+        -:  330:	    else
+        -:  331:	    {
+    #####:  332:	       delete tptr->left;
+    #####:  333:	       tptr->left = NULL;
+    #####:  334:	    }
+        -:  335:	 }
+        1:  336:	 else if (k > tptr->key && tptr->right)
+        -:  337:	 {
+        1:  338:	    if (tptr->right->left && tptr->right->right)
+        -:  339:	    {
+    #####:  340:	       node* tptr2 = tptr->right->left;
+    #####:  341:	       if (tptr2->right)
+        -:  342:	       {
+    #####:  343:	          while (tptr2->right->right)
+        -:  344:	          {
+    #####:  345:		     tptr2 = tptr2->right;
+        -:  346:		  }
+        -:  347:	       }
+    #####:  348:               if (tptr2->right)
+        -:  349:	       {
+    #####:  350:	          tptr->right->key = tptr2->right->key;
+    #####:  351:		  tptr->right->value = tptr2->right->value;
+    #####:  352:	          delete tptr2->right;
+    #####:  353:	          tptr2->right = NULL;
+        -:  354:               }
+        -:  355:	       else
+        -:  356:	       {
+    #####:  357:	          tptr->right->key = tptr2->key;
+    #####:  358:		  tptr->right->value = tptr2->value;
+    #####:  359:		  delete tptr2;
+    #####:  360:		  tptr->right->left = NULL;
+    #####:  361:	       }
+        -:  362:	    }
+        1:  363:            else if (tptr->right->left)
+        -:  364:	    {
+        1:  365:	       node* tptr2 = tptr->right->left;
+        1:  366:	       if (tptr2->right)
+        -:  367:	       {
+        2:  368:	          while (tptr2->right->right)
+        -:  369:		  {
+    #####:  370:		     tptr2 = tptr2->right;
+        -:  371:		  }
+        -:  372:	       }
+        1:  373:	       if (tptr2->right)
+        -:  374:	       {
+        1:  375:	          tptr->right->key = tptr2->right->key;
+        1:  376:		  tptr->right->key = tptr2->right->key;
+        1:  377:		  delete tptr2->right;
+        1:  378:		  tptr2->right = NULL;
+        -:  379:	       }
+        -:  380:	       else
+        -:  381:	       {
+    #####:  382:	          tptr->right->key = tptr2->key;
+    #####:  383:		  tptr->right->value = tptr2->value;
+    #####:  384:		  delete tptr2;
+    #####:  385:		  tptr->right->left = NULL;
+        -:  386:	       }
+        -:  387:	    }
+    #####:  388:	    else if (tptr->right->right)
+        -:  389:	    {
+    #####:  390:	       node *tptr2 = tptr->right;
+    #####:  391:	       tptr->right = tptr2->right;
+    #####:  392:	       delete tptr2;
+        -:  393:	    }
+        -:  394:	    else
+        -:  395:	    {
+    #####:  396:	       delete tptr->right;
+    #####:  397:	       tptr->right = NULL;
+        1:  398:	    }
+        -:  399:
+        -:  400:	 }
+    #####:  401:	 else if (k = tptr->key)
+        -:  402:	 {
+    #####:  403:	    if (tptr->left && tptr->right)
+        -:  404:	    {
+    #####:  405:	       node* tptr2 = tptr->left;
+    #####:  406:	       if (tptr2->right)
+        -:  407:	       {
+    #####:  408:	          while (tptr->right->right)
+        -:  409:	          {
+    #####:  410:		     tptr2 = tptr2->right;
+        -:  411:		  }
+        -:  412:	       }
+    #####:  413:               if (tptr2->right)
+        -:  414:	       {
+    #####:  415:	          tptr->key = tptr2->right->key;
+    #####:  416:		  tptr->value = tptr2->right->value;
+    #####:  417:	          delete tptr2->right;
+    #####:  418:	          tptr2->right = NULL;
+        -:  419:               }
+        -:  420:	       else
+        -:  421:	       {
+    #####:  422:	          tptr->key = tptr2->key;
+    #####:  423:		  tptr->value = tptr2->value;
+    #####:  424:		  if (tptr2->left)
+        -:  425:		  {
+    #####:  426:		     tptr->left = tptr2->left;
+        -:  427:		  }
+        -:  428:		  else
+        -:  429:		  {
+    #####:  430:		     tptr->left = NULL;
+        -:  431:		  }
+    #####:  432:		  delete tptr2;
+        -:  433:		  
+    #####:  434:	       }
+        -:  435:	    }
+    #####:  436:	    else if (tptr->left)
+        -:  437:	    {
+    #####:  438:	       root = tptr->left;
+    #####:  439:	       delete tptr;
+        -:  440:	    }
+    #####:  441:	    else if (tptr->right)
+        -:  442:	    {
+    #####:  443:	       root = tptr->right;
+    #####:  444:	       delete tptr;
+        -:  445:	    }
+        -:  446:         }
+        -:  447:      }
+        -:  448:      else
+        -:  449:      {
+    #####:  450:         cout << "-1" << endl;
+        -:  451:      }
+        1:  452:   }
+        -:  453:};
+        -:  454:
+        -:  455:
+        1:  456:int main(void)
+        -:  457:{
+        1:  458:    bst mybst;
+        -:  459:
+        1:  460:    string cmd;
+        -:  461:    int k;
+        1:  462:    string v;
+        -:  463:
+       24:  464:    while (true) {
+       25:  465:        cin >> cmd >> k >> v;
+        -:  466:
+       25:  467:        cout << "MAIN: cmd= " << cmd << ", key= " << k << ", v= " << v << endl;
+        -:  468:
+       25:  469:        if (cmd == "put") {
+       21:  470:            mybst.put(k, v);
+        4:  471:        } else if (cmd == "dump") {     // traverse tree in ascending order
+        2:  472:            mybst.dump();
+        2:  473:        } else if (cmd == "dump_rev") { // traverse tree in descending order
+    #####:  474:            mybst.dump_rev();
+        2:  475:        } else if (cmd == "get") {
+    #####:  476:            cout << "MAIN: get returns: " << mybst.non_recursive_get(k) << endl;
+        2:  477:        } else if (cmd == "rget") {
+    #####:  478:            cout << "MAIN: rget returns: " << mybst.recursive_get(k) << endl;
+        2:  479:        } else if (cmd == "rem") {
+        1:  480:            mybst.remove(k);
+        1:  481:        } else if (cmd == "quit") {
+        1:  482:            exit(0);
+        -:  483:        }
+        -:  484:    }
+        3:  485:}
+        -:  486:

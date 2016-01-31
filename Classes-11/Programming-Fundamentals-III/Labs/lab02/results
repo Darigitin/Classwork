@@ -1,0 +1,217 @@
+MAIN: cmd = add, i = 20, d = 1
+-1
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 0, first = -1, last = -1)
+    DUMP: head = NULL
+
+MAIN: cmd = addf, i = 0, d = 5
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 1, first = 5, last = 5)
+    DUMP:   head = : 5
+
+MAIN: cmd = addl, i = 0, d = 10
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 2, first = 5, last = 10)
+    DUMP:   head = : 5
+    DUMP:   data = : 10
+
+MAIN: cmd = add, i = 1, d = 2
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 3, first = 5, last = 10)
+    DUMP:   head = : 5
+    DUMP:   data = : 2
+    DUMP:   data = : 10
+
+MAIN: cmd = add, i = 3, d = 5
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 4, first = 5, last = 5)
+    DUMP:   head = : 5
+    DUMP:   data = : 2
+    DUMP:   data = : 10
+    DUMP:   data = : 5
+
+MAIN: cmd = rem, i = 2, d = 0
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 3, first = 5, last = 5)
+    DUMP:   head = : 5
+    DUMP:   data = : 2
+    DUMP:   data = : 5
+
+MAIN: cmd = rem, i = 5, d = 0
+-1
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 3, first = 5, last = 5)
+    DUMP:   head = : 5
+    DUMP:   data = : 2
+    DUMP:   data = : 5
+
+MAIN: cmd = remf, i = 0, d = 0
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 2, first = 2, last = 5)
+    DUMP:   head = : 2
+    DUMP:   data = : 5
+
+MAIN: cmd = reml, i = 0, d = 0
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 1, first = 2, last = 2)
+    DUMP:   head = : 2
+
+MAIN: cmd = addl, i = 0, d = 2
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 2, first = 2, last = 2)
+    DUMP:   head = : 2
+    DUMP:   data = : 2
+
+MAIN: cmd = addf, i = 1, d = 5
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 3, first = 5, last = 2)
+    DUMP:   head = : 5
+    DUMP:   data = : 2
+    DUMP:   data = : 2
+
+MAIN: cmd = rem, i = 0, d = 0
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 2, first = 2, last = 2)
+    DUMP:   head = : 2
+    DUMP:   data = : 2
+
+MAIN: cmd = remf, i = 0, d = 1
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 1, first = 2, last = 2)
+    DUMP:   head = : 2
+
+MAIN: cmd = addf, i = 1, d = 10
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 2, first = 10, last = 2)
+    DUMP:   head = : 10
+    DUMP:   data = : 2
+
+MAIN: cmd = addf, i = 20, d = 0
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 3, first = 0, last = 2)
+    DUMP:   head = : 0
+    DUMP:   data = : 10
+    DUMP:   data = : 2
+
+MAIN: cmd = add, i = 5, d = 24
+-1
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 3, first = 0, last = 2)
+    DUMP:   head = : 0
+    DUMP:   data = : 10
+    DUMP:   data = : 2
+
+MAIN: cmd = rem, i = 0, d = 0
+MAIN: cmd = rem, i = 0, d = 0
+MAIN: cmd = rem, i = 0, d = 0
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 0, first = -1, last = -1)
+    DUMP: head = NULL
+
+MAIN: cmd = addl, i = 0, d = 1
+MAIN: cmd = add, i = 0, d = 2
+MAIN: cmd = add, i = 1, d = 2
+MAIN: cmd = add, i = 2, d = 3
+MAIN: cmd = add, i = 3, d = 4
+MAIN: cmd = add, i = 4, d = 5
+MAIN: cmd = add, i = 1, d = 2
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 7, first = 2, last = 1)
+    DUMP:   head = : 2
+    DUMP:   data = : 2
+    DUMP:   data = : 2
+    DUMP:   data = : 3
+    DUMP:   data = : 4
+    DUMP:   data = : 5
+    DUMP:   data = : 1
+
+MAIN: cmd = rem, i = 0, d = 0
+MAIN: cmd = rem, i = 0, d = 0
+MAIN: cmd = rem, i = 0, d = 0
+MAIN: cmd = rem, i = 0, d = 0
+MAIN: cmd = rem, i = 0, d = 0
+MAIN: cmd = rem, i = 0, d = 0
+MAIN: cmd = rem, i = 0, d = 0
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 0, first = -1, last = -1)
+    DUMP: head = NULL
+
+MAIN: cmd = addl, i = 0, d = 10
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 1, first = 10, last = 10)
+    DUMP:   head = : 10
+
+MAIN: cmd = add, i = 0, d = 1
+MAIN: cmd = add, i = 0, d = 2
+MAIN: cmd = add, i = 2, d = 4
+MAIN: cmd = reml, i = 0, d = 0
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 3, first = 2, last = 4)
+    DUMP:   head = : 2
+    DUMP:   data = : 1
+    DUMP:   data = : 4
+
+MAIN: cmd = getf, i = 0, d = 0
+getf returns: 2
+MAIN: cmd = getl, i = 0, d = 0
+getl returns: 4
+MAIN: cmd = get, i = 1, d = 0
+get returns: 1
+MAIN: cmd = rem, i = 0, d = 0
+MAIN: cmd = rem, i = 0, d = 0
+MAIN: cmd = rem, i = 0, d = 0
+MAIN: cmd = rem, i = 0, d = 0
+-1
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 0, first = -1, last = -1)
+    DUMP: head = NULL
+
+MAIN: cmd = getf, i = 0, d = 0
+getf returns: -1
+MAIN: cmd = getl, i = 0, d = 0
+getl returns: -1
+MAIN: cmd = get, i = 1, d = 0
+get returns: -1
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 0, first = -1, last = -1)
+    DUMP: head = NULL
+
+MAIN: cmd = add, i = 0, d = 0
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 1, first = 0, last = 0)
+    DUMP:   head = : 0
+
+MAIN: cmd = reml, i = 0, d = 0
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 0, first = -1, last = -1)
+    DUMP: head = NULL
+
+MAIN: cmd = add, i = 0, d = 1
+MAIN: cmd = add, i = 1, d = 2
+MAIN: cmd = add, i = 2, d = 3
+MAIN: cmd = add, i = 3, d = 4
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 4, first = 1, last = 4)
+    DUMP:   head = : 1
+    DUMP:   data = : 2
+    DUMP:   data = : 3
+    DUMP:   data = : 4
+
+MAIN: cmd = rem, i = 4, d = 0
+-1
+MAIN: cmd = rem, i = 3, d = 0
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 3, first = 1, last = 3)
+    DUMP:   head = : 1
+    DUMP:   data = : 2
+    DUMP:   data = : 3
+
+MAIN: cmd = get, i = 4, d = 0
+get returns: -1
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 3, first = 1, last = 3)
+    DUMP:   head = : 1
+    DUMP:   data = : 2
+    DUMP:   data = : 3
+
+MAIN: cmd = quit, i = 0, d = 0

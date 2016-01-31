@@ -1,0 +1,342 @@
+vertefeuille
+===========================================================================
+NOTE:
+
+To find my comments in this file, which contains both your
+program and its output, search for the string "MCU".
+
+Your grade is at the bottom of this file.
+===========================================================================
+
+lab2.cpp SOURCE: ============================
+#include <iostream>
+#include <cstdlib>
+#include <string>
+
+using namespace std;
+
+class node
+{
+  public:
+    typedef int data_t;
+
+    node(data_t d) { next = NULL; data = d; }
+
+    node *next;
+    data_t data;
+};
+
+
+class linked_list
+{
+  private:
+    node *head;
+
+  public:
+
+    linked_list()
+    {
+        head = NULL;
+    }
+
+    int size()
+    {
+       node *tptr = head;
+       int c = 0;
+       while (tptr)
+       {
+          tptr = tptr->next;
+	  c++;
+       }
+       return c;
+    }
+
+    void add(int n, node::data_t d)
+    {
+       if (n>size())
+       {
+          cout << -1 << endl;
+       }
+       else if (n == 0)
+       {
+          node *tptr = new node(d);
+          tptr->next = head;
+          head = tptr;
+       }
+       else if (n < size())
+       {
+         node *tptr = head;
+	 node *tptr2 = new node(d);
+         n = n - 1;
+	 for (int c = 0; c<n && tptr->next != NULL; c++)
+	 {
+	    tptr = tptr->next;
+	 }
+	 tptr2->next = tptr->next;
+	 tptr->next = tptr2;
+	 
+       }
+       else 
+       {
+          if (head)
+          {
+             node *tptr = head;
+             while (tptr->next)
+             {
+                tptr = tptr->next;
+             }
+             tptr->next = new node(d);
+          }
+          else
+          {
+             head = new node(d);
+          }
+       }
+    }
+    void add_last(node::data_t d)
+    {
+       add(size(), d);
+    }
+
+    void add_first(node::data_t d)
+    {
+       add(0, d);
+    }
+
+    node::data_t get(int n)
+    {
+       node *tptr = head;
+       if (n > size() || head == NULL)
+       {
+          return -1;
+       }
+       else 
+       {  
+          for (int c = 0; c<n && tptr->next != NULL; c++)
+          {
+             tptr = tptr->next;
+          }
+          return tptr->data;
+       }
+    }
+
+
+    node::data_t get_first()
+    {
+       if (head != NULL)
+       {
+          return head->data;
+       }
+       return -1;
+    }
+
+    node::data_t get_last()
+    {
+       node *tptr = head;
+       if (head != NULL)
+       {
+          while (tptr->next)
+          {
+             tptr = tptr->next;
+          }
+          return tptr->data;
+       }
+       return -1;
+    }
+
+    void remove(int n)
+    {
+       if (n > size() || head == NULL)
+       {
+          cout << -1 << endl;
+       }
+       else if(n == 0)
+       {
+          if (head->next)
+	  {
+             node *tptr = head;
+             head = head->next;   
+	  }
+          else 
+          {
+             delete head;
+             head = NULL;
+          }
+       }
+       else if (n < size())
+       {
+          node *tptr = head;
+	  n = n - 1;
+
+	  for (int c = 0; c<n && tptr->next != NULL; c++)
+	  {
+             tptr = tptr->next;
+	  }
+          node *tptr2 = tptr->next;
+          tptr->next = tptr2->next;
+          delete tptr2;
+       }
+       else 
+       {
+          node *tptr = head;
+          n = n - 2;
+          for (int c = 0; c<n && tptr->next != NULL; c++)
+          {
+	     tptr = tptr->next;
+          }
+	  delete tptr->next;
+          tptr->next = NULL;
+       } 
+  
+    }
+
+    void remove_first()
+    {
+       remove(0);
+    }
+
+    void remove_last()
+    {
+       remove(size());
+    }
+
+    void dump()
+       {
+        node *tptr;
+
+        cout << "    DUMP: (size = " << size() << ", first = " << get_first() << ", last = " << get_last() << ")\n";
+
+        if (head == NULL) {
+            cout << "    DUMP: head = NULL\n\n";
+            return;
+        }
+
+        tptr = head;
+
+        cout << "    DUMP:   head = : " << tptr->data << endl;
+        while (tptr->next != NULL) {
+            tptr = tptr->next;
+        cout << "    DUMP:   data = : " << tptr->data << endl;
+        }
+        cout << endl;
+      }
+};
+
+
+int main(void)
+{
+    linked_list ll;
+    string cmd;
+    int i, d;
+
+    while (true) {
+        cin >> cmd >> i >> d;
+
+        cout << "MAIN: cmd = " << cmd << ", i = " << i
+             << ", d = " << d << endl;
+
+        if (cmd == "add")
+            ll.add(i, d);
+        else if (cmd == "addf")
+            ll.add_first(d);
+        else if (cmd == "addl")
+            ll.add_last(d);
+        else if (cmd == "rem")
+            ll.remove(i);
+        else if (cmd == "remf")
+            ll.remove_first();
+        else if (cmd == "reml")
+            ll.remove_last();
+        else if (cmd == "get") {
+            d = ll.get(i);
+            cout << "get returns: " << d << endl;
+        } else if (cmd == "getf") {
+            d = ll.get_first();
+            cout << "getf returns: " << d << endl;
+        } else if (cmd == "getl") {
+            d = ll.get_last();
+            cout << "getl returns: " << d << endl;
+        } else if (cmd == "dump")
+            ll.dump();
+        else if (cmd == "quit")
+            exit(0);
+    }
+}
+
+OUTPUT: =====================================
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 1, first = 0, last = 0)
+    DUMP:   head = : 0
+
+MAIN: cmd = ##########InvalidIndex, i = 0, d = 0
+MAIN: cmd = add, i = 9, d = 0
+-1
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 1, first = 0, last = 0)
+    DUMP:   head = : 0
+
+Matt-
+
+YOur program runs all the way to the end without a segfault, 
+but there is one small nit.  In the output above, I call
+"add 9 0" with a null list.  Your program should have returned
+an error, but instead, it added a node to index zero.
+
+my bad.  I saw that you had an extra node at the end of the
+above operation, but upon closer inspection, the extra node
+didn't pop up from the invalid add operation, but instead
+was left after a failed remove operation.  (the above output
+was a clip from a larger test).  So do some more testing on
+your remove code and let me know when you are ready for a
+regrade.
+
+sep 25 regrade =======================================
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 3, first = 0, last = 2)
+    DUMP:   head = : 0
+    DUMP:   data = : 1
+    DUMP:   data = : 2
+
+MAIN: cmd = ##########GetSomeValues, i = 0, d = 0
+MAIN: cmd = getf, i = 0, d = 0
+getf returns: 0
+MAIN: cmd = getl, i = 0, d = 0
+getl returns: 2
+MAIN: cmd = get, i = 0, d = 0
+get returns: 0
+MAIN: cmd = get, i = 1, d = 0
+get returns: 1
+MAIN: cmd = get, i = 2, d = 0
+get returns: 2
+MAIN: cmd = ##########GetFromNonExistentNode, i = 0, d = 0
+MAIN: cmd = get, i = 3, d = 0
+get returns: 2
+
+Matt-
+
+THe above is part of a larger test.  The list has three elements,
+indexed 0,1,2.  I then call "get 3 0".  Your program should have
+returned an error (no such node).  Instead, it returned a 2.
+
+
+Sep 27 re-regrade ======================================
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 3, first = 0, last = 2)
+    DUMP:   head = : 0
+    DUMP:   data = : 1
+    DUMP:   data = : 2
+
+MAIN: cmd = ##########RemoveNonExistentNode, i = 0, d = 0
+MAIN: cmd = rem, i = 3, d = 0
+MAIN: cmd = ##########RemoveFromMiddleOfNonNullList, i = 0, d = 0
+MAIN: cmd = rem, i = 1, d = 0
+MAIN: cmd = dump, i = 0, d = 0
+    DUMP: (size = 0, first = -1, last = -1)
+    DUMP: head = NULL
+
+sep27 re-re-regrade ======================================
+
+looks perfect!
+
+Grade: 100 - 30pts (3regrades)  = 70
+

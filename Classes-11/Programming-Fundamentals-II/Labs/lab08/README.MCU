@@ -1,0 +1,230 @@
+vertefeuille
+===========================================================================
+NOTE:
+
+To find my comments in this file, which contains both your
+program and its output, search for the string "MCU".
+
+Your grade is at the bottom of this file.
+===========================================================================
+
+Lab8.java SOURCE: ============================
+import java.io.*;
+
+//13,0123456789
+
+public class Lab8 
+{
+    public static void printPixels(boolean pixel[][])
+    {
+       System.out.println("Converted to 'pixels': =====================");
+       for (int i = 0; i < pixel.length; i++)
+       {
+          for (int j = 0; j < pixel[i].length; j++)
+	  {
+	     if (pixel[i][j] == true)
+	     {
+	        System.out.print("X");
+	     }
+	     else
+	     {
+	        System.out.print(" ");
+	     }
+	  }
+	  System.out.println("");
+       }
+    }
+    public static void main(String args[]) throws IOException
+    {
+        InputStreamReader reader = new InputStreamReader(System.in);
+
+        int cten, cone, c2ten, c2one;
+        int  n, i, j;
+
+        cten = reader.read() - 48;
+        cone = reader.read() - 48;
+
+
+
+
+        int number = 10*cten + cone;
+
+        n = reader.read();  // skip over comma
+        if (n != ',')
+        {
+            System.out.println("data error.  comma expected");
+            System.exit(1);
+        }
+	c2ten = reader.read() - 48;
+	c2one = reader.read() - 48;
+	
+
+	int number2 = 10*c2ten + c2one;
+
+	int dataArray[][] = new int[number][number2];
+	boolean pixelArray[][] = new boolean[number][number2];
+	
+	n = reader.read();
+	if (n != ',')
+	{
+	   System.out.println("data error. comma expected");
+	   System.exit(1);
+	}
+	System.out.println("Raw data in table format: ===================)");
+	for (i = 0; i < number; i++)
+	{
+	   for (j = 0; j < number2; j++)
+	   {
+	      n = reader.read() - 48;
+	      dataArray[i][j] = n;
+              System.out.print(dataArray[i][j]);
+              if (n >= 5)
+              {
+                 pixelArray[i][j] = true;
+              }
+	   }
+           System.out.println("");
+	}
+        System.out.println("");
+	printPixels(pixelArray);
+
+	for (i = 1; i < number-1; i++)
+	{
+	   for (j = 1; j < number2-1; j++)
+	   {
+	      int count = 0;
+	      for (int i2 = i-1; i2 <= i+1; i2++)
+	      {
+	         for (int j2 = j-1; j2 <= j+1; j2++)
+		 {
+		    if (pixelArray[i][j] != pixelArray[i2][j2])
+		    {
+		       count++;
+		    }
+		 }
+	      }
+	      if (count == 8)
+	      {
+	         pixelArray[i][j] = !pixelArray[i][j];
+	      }
+	   }
+	}
+        printPixels(pixelArray);
+   }
+}
+OUTPUT: =====================================
+Raw data in table format: ===================)
+4314334303420012214322234420041331211432130340314241144334414130214344202243003
+2402233323211730230212004013331403344042109302461214144103104023244824024131310
+3302599553410304476575346060107995887772032143013214203777859757330023603104133
+1142597562110111294996214422797188893667803129214143107645857629703242424301220
+4332881970044010459708025408958888658572664223320944495689997985570309200413200
+4103578862131321057666231225468584328966592303413121197559212998782021412020100
+1032766770228242273978307405897700304858790331161122551560143166668441811389430
+2111786663333400085698342425517752304034404211000312588571100379858024000077110
+0204635850124332075947410311885496340431261301323306537811040208828641007356202
+1004556894010394057976035110099958764233043019322445767902203126779724002497334
+0334976760213103270859023072234856765512210101244197097221404041653754460495302
+1201752891133041388669112314412117864777222263420199999565699585879680223410243
+0122886952181403396956135405248013158555710332131878795165761569456675123265032
+2400878563333251287649213101320030326717672233244779969795675566597069412003144
+2011555680426403399855420127687829341958652301139969624313110104218676544732313
+3414951667331003565658043446576541005753964107427627604272072118419750532301243
+1112497946979566697772422425625789559356593440279959302124232040240855692364124
+0402139659519568568610201420859536546656814631254875303621931007403561564130320
+4113310958969886568203350161239665558790301034358685102242305040440967591090441
+3149304103301422413319144414333033143110245072430114109042420405420003300424012
+2032126434131210941314030438211403427102043302240221313418011213270134464424410
+1413030246423120310180103044231144423341482220120004430211213202132321011041422
+0389766323146775831014696694048576576334331414313895702039859811399578876310994
+0694428953059020792229610398445742118914340328020199320279214664358211137920872
+9831032661983070469285444307516834421852474233232385342971231079259421135810873
+9727101341663313178265226236835721710974442034233389312993312377079876979441680
+8600488683960192095296401145748711003672241740400277314692053177355024427911770
+8514224774773044476065225117748942920570442304574289011783130386088101039941014
+3572316691165133763017544089306542009842260141879889130056331561055303328500783
+0157759002419895721444967963439989595400320604186684002419585800159565899400664
+3432120214232332122040321444130144331211112142040444000332240023030240203312334
+
+Converted to 'pixels': =====================
+                                                                               
+             X                            X    X                   X           
+    XXXXX        XXXXX  X X   XXXXXXXXX                XXXXXXXXX      X        
+    XXXXX        X XXX      XXX XXXX XXXX    X        XX XXXXX XX              
+    XX XX        XXX X  X  XXXXXXXXXXXX XX       X   XXXXXXXXXXXXX   X         
+    XXXXX        XXXXX     X XXXX   XXXXXX           XXXXX   XXXXX             
+    XXXXX   X    X XXX  X  XXXXX     XXXXX     X    XX XX     XXXXX   X   XX   
+    XXXXX        XXXXX     XX XXX                   XXXXX     XXXXX       XX   
+    X XXX        XXX X      XXX XX       X         XX XX       XX XX    X XX   
+    XXXXX     X  XXXXX  X    XXXXXXX         X     XXXXX       XXXXX      XX   
+    XXXXX        X XXX    X    XXXXXXX            XX XX         XX XX  X  XX   
+    XX XX        XXXXX           XXX XXX    X     XXXXXXXXXXXXXXXXXXX          
+    XXXXX  X     XXXXX  X  X  X    XXXXXX        XXXXXX XXXX XXX XXXXX    XX   
+    XXXXX     X  XXX X              XX XXX       XXXXXXXXXXXXXXXXXX XX         
+    XXXXX   X    XXXXX     XXXXX X   XXXXX      XXXXX             XXXXX  X     
+    XX XXX      XXXXXX     XXXXX    XXX XX   X  XX XX   X  X   X  XXX X        
+     XXX XXXXXXXXXXXX      XX XXXXXXX XXXX     XXXXX               XXXXX  X    
+      XXXXX XXXXXXXX        XXXX XX XXXXX  X   X XXX   X  X    X   XX XX       
+       XXXXXXXXXXXX    X  X   XXXXXXXXX        XXXXX        X      XXXXX  X    
+   X                 X                    X X         X        X               
+      X         X          X        X                    X       X     X       
+         X          X                    X                                     
+  XXXXX     XXXXX     XXXXX   XXXXXXX            XXXX    XXXXX   XXXXXXXX   XX 
+ XX   XXX  XX   XX   XX   XX  XX    XX       X    XX    XX   XX  XX     XX  XX 
+XX     XX XX  X  XX XX     XX XX     XX  X        XX   XX     XX XX     XX  XX 
+XX X      XX     XX XX  X  XX XX  X  XX           XX   XX     XX XXXXXXXX   XX 
+XX   XXXX XX  X  XX XX     XX XX     XX    X      XX   XX  X  XX XX     XX  XX 
+XX     XX XX     XX XX  X  XX XX  X  XX       XX  XX   XX     XX XX     XX     
+ XX   XXX  XX   XX   XX   XX  XX    XX   X    XXXXXX    XX   XX  XX     XX  XX 
+  XXXXX     XXXXX     XXXXX   XXXXXXX      X   XXXX      XXXXX   XXXXXXXX   XX 
+                                                                               
+Converted to 'pixels': =====================
+                                                                               
+                                                                               
+    XXXXX        XXXXX        XXXXXXXXX                XXXXXXXXX               
+    XXXXX        XXXXX      XXXXXXXXXXXXX             XXXXXXXXXXX              
+    XXXXX        XXXXX     XXXXXXXXXXXXXXX           XXXXXXXXXXXXX             
+    XXXXX        XXXXX     XXXXXX   XXXXXX           XXXXX   XXXXX             
+    XXXXX        XXXXX     XXXXX     XXXXX          XXXXX     XXXXX       XX   
+    XXXXX        XXXXX     XXXXXX                   XXXXX     XXXXX       XX   
+    XXXXX        XXXXX      XXXXXX                 XXXXX       XXXXX      XX   
+    XXXXX        XXXXX       XXXXXXX               XXXXX       XXXXX      XX   
+    XXXXX        XXXXX         XXXXXXX            XXXXX         XXXXX     XX   
+    XXXXX        XXXXX           XXXXXXX          XXXXXXXXXXXXXXXXXXX          
+    XXXXX        XXXXX             XXXXXX        XXXXXXXXXXXXXXXXXXXXX    XX   
+    XXXXX        XXXXX              XXXXXX       XXXXXXXXXXXXXXXXXXXXX         
+    XXXXX        XXXXX     XXXXX     XXXXX      XXXXX             XXXXX        
+    XXXXXX      XXXXXX     XXXXX    XXXXXX      XXXXX             XXXXX        
+     XXXXXXXXXXXXXXXX      XXXXXXXXXXXXXXX     XXXXX               XXXXX       
+      XXXXXXXXXXXXXX        XXXXXXXXXXXXX      XXXXX               XXXXX       
+       XXXXXXXXXXXX           XXXXXXXXX        XXXXX               XXXXX       
+                                                                               
+                                                                               
+                                                                               
+  XXXXX     XXXXX     XXXXX   XXXXXXX            XXXX    XXXXX   XXXXXXXX   XX 
+ XX   XXX  XX   XX   XX   XX  XX    XX            XX    XX   XX  XX     XX  XX 
+XX     XX XX     XX XX     XX XX     XX           XX   XX     XX XX     XX  XX 
+XX        XX     XX XX     XX XX     XX           XX   XX     XX XXXXXXXX   XX 
+XX   XXXX XX     XX XX     XX XX     XX           XX   XX     XX XX     XX  XX 
+XX     XX XX     XX XX     XX XX     XX       XX  XX   XX     XX XX     XX     
+ XX   XXX  XX   XX   XX   XX  XX    XX        XXXXXX    XX   XX  XX     XX  XX 
+  XXXXX     XXXXX     XXXXX   XXXXXXX          XXXX      XXXXX   XXXXXXXX   XX 
+                                                                               
+DUE DATE: May 6 7:00am   ================================================
+total 56
+drwxrwxr-x  2 vertefeuille vertefeuille  4096 2011-05-08 11:54 .
+drwxrwx--- 13 vertefeuille vertefeuille  4096 2011-05-03 10:18 ..
+-rw-rw-r--  1 vertefeuille vertefeuille    32 2011-05-03 09:27 datafile
+-rw-rw-r--  1 vertefeuille vertefeuille  1921 2011-05-03 09:24 Lab8.class
+-rw-rw-r--  1 vertefeuille vertefeuille  2188 2011-05-03 09:24 Lab8.java
+-rw-r--r--  1 root         root         10261 2011-05-08 11:54 README.MCU
+===========================================================================
+    *****    All students are required to read and understand   *****
+    *****    the Attendance, Homework, and Late Work Policies   *****
+    *****    which can be found at http://cs.actx.edu/~usnick   *****
+===========================================================================
+Instructor Comments:
+
+Super job.
+
+Grade:  100

@@ -1,0 +1,261 @@
+vertefeuille
+===========================================================================
+NOTE:
+
+To find my comments in this file, which contains both your
+program and its output, search for the string "MCU".
+
+Your grade is at the bottom of this file.
+===========================================================================
+
+Lab6.java SOURCE: ============================
+import java.io.*;
+import java.util.*;
+class ST
+{
+   String ss;
+   String sar[];
+   String star[];
+   int numTokens;
+   int index = 0;
+
+   public ST(String s, String d, int a)
+   {
+      ss = s;
+      star = new String[50];
+      int tokenStart = 0, tokenEnd = 0;
+      for (int i = 0; (i+1) < s.length(); i++)
+      {
+         if (isDelim(s.substring(i, i+1), d) && !isDelim(s.substring(i+1, i+2), d))
+         {
+            tokenStart = i;
+         }
+         if (!isDelim(s.substring(i, i+1), d) && isDelim(s.substring(i+1, i+2), d))
+         {
+            tokenEnd = i+1; 
+         }
+	 if (tokenStart < tokenEnd)
+	 {
+	   star[numTokens] = s.substring(tokenStart, tokenEnd);
+	   numTokens++;
+           tokenStart = 0;
+           tokenEnd = 0;
+	 }
+      }         
+      if (tokenStart > tokenEnd)
+      {
+         star[numTokens] = s.substring(tokenStart);
+         numTokens++;
+         tokenStart = 0;
+         tokenEnd = 0;
+      }
+      if (a == 2)
+      {
+         sentenceTokenizer(ss, ".");
+      }
+   }
+
+
+   public ST(String s, int a)
+   {
+      this(s, " ", a);
+   }
+
+   public boolean isDelim(String a, String b)
+   {
+      if(b.indexOf(a) != -1)
+      {
+         return true;
+      }
+      else
+      {
+         return false;
+      }
+   }
+   public int countTokens()
+   {
+      return (numTokens - index);
+   }
+   
+   public boolean hasMoreTokens()
+   {
+      return (numTokens > index);
+   }
+   
+   public String nextToken(int a)
+   {
+      if (a == 1)
+      {
+         return star[index++];
+      }
+      else
+      {
+         return sar[index++];
+      }
+   }
+   public void sentenceTokenizer(String s, String d)
+   {
+      sar = new String[50];
+      numTokens = 0;
+      int tokenStart = 0, tokenEnd = 0;
+      for (int i = 0; (i+1) < s.length(); i++)
+      {
+         if (isDelim(s.substring(i, i+1), d) && !isDelim(s.substring(i+1, i+2), d))
+         {
+            tokenStart = i + 1;
+         }
+         if (!isDelim(s.substring(i, i+1), d) && isDelim(s.substring(i+1, i+2), d))
+         {
+            tokenEnd = i+2; 
+         }
+	 if (tokenStart < tokenEnd && (tokenEnd - tokenStart) <= 3)
+	 {
+	    sar[numTokens] = s.substring(tokenStart, tokenEnd);
+	    tokenStart = 0;
+	    tokenEnd = 0;
+	 }
+         if (sar[numTokens] != null)
+         {
+
+	    if (tokenStart < tokenEnd && (tokenEnd - tokenStart) > 3)
+	    {
+	       sar[numTokens] = sar[numTokens] + s.substring(tokenStart, tokenEnd);
+	       numTokens++;
+               tokenStart = 0;
+               tokenEnd = 0;
+	    }
+         }
+         else if (tokenStart < tokenEnd)
+         {
+	    sar[numTokens] = s.substring(tokenStart, tokenEnd);
+	    numTokens++;
+            tokenStart = 0;
+            tokenEnd = 0;
+         } 
+      }         
+      if (tokenStart > tokenEnd)
+      {
+         sar[numTokens] = s.substring(tokenStart);
+         numTokens++;
+         tokenStart = 0;
+         tokenEnd = 0;
+      }
+      System.out.println(s.substring(tokenStart, tokenEnd));
+    
+   }
+
+}
+
+public class Lab6
+{
+   public static void main(String argv[]) throws IOException
+   {
+      String buffer = null, s = ""; 
+      if (argv.length != 1)
+      {
+         System.out.println("You must supply a file name!");
+         System.exit(0);
+      }
+      FileReader fr     = new FileReader(argv[0]);
+      BufferedReader br = new BufferedReader(fr);
+      while ((buffer = br.readLine()) != null) 
+      {
+         s = s + buffer;
+         System.out.println("[" + buffer + "]");
+      }
+
+      BufferedReader sbr = new BufferedReader(new InputStreamReader(System.in));
+      System.out.println("Enter a 1 for Words or a 2 for sentences.");
+      System.out.print("input : ");
+      int a = Integer.parseInt(sbr.readLine()); 
+      ST stok = new ST(s, a);
+      while (stok.hasMoreTokens())
+      {
+         System.out.println(stok.countTokens() + ". " + "[" + stok.nextToken(a) + "]");
+      }
+
+
+   }
+}
+
+
+OUTPUT: =====================================
+[root@cs lab6]# cd /home/$u/cosc1437/lab6; java Lab6 /tmp/x
+[Here is a nice sentence.]
+[This sentence is continued]
+[on the next line.]
+[This is a short sentence.  So is this one.]
+[Mr. Jones is a nice man.]
+[Sentence 1.  Sentence 2.  Sentence 3.  Sentence 4.  Sentence 5.]
+[Your program should not have any limits on the number]
+[of sentences per line and should also not have any]
+[restrictions on the number of lines per sentence -]
+[some of them can be pretty long - like this one.]
+Enter a 1 for Words or a 2 for sentences.
+input : 1
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 50
+        at ST.<init>(Lab6.java:28)
+        at ST.<init>(Lab6.java:50)
+        at Lab6.main(Lab6.java:160)
+[root@cs lab6]# cd /home/$u/cosc1437/lab6; java Lab6 /tmp/x
+[Here is a nice sentence.]
+[This sentence is continued]
+[on the next line.]
+[This is a short sentence.  So is this one.]
+[Mr. Jones is a nice man.]
+[Sentence 1.  Sentence 2.  Sentence 3.  Sentence 4.  Sentence 5.]
+[Your program should not have any limits on the number]
+[of sentences per line and should also not have any]
+[restrictions on the number of lines per sentence -]
+[some of them can be pretty long - like this one.]
+Enter a 1 for Words or a 2 for sentences.
+input : 2
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 50
+        at ST.<init>(Lab6.java:28)
+        at ST.<init>(Lab6.java:50)
+        at Lab6.main(Lab6.java:160)
+
+DUE DATE: Mar 29 7:00 pm   ================================================
+total 92
+drwxrwxr-x  2 vertefeuille vertefeuille  4096 2011-04-01 05:52 .
+drwxrwx--- 11 vertefeuille vertefeuille  4096 2011-03-31 09:35 ..
+-rw-rw-r--  1 vertefeuille vertefeuille   186 2011-03-30 16:22 datafile
+-rw-rw-r--  1 vertefeuille vertefeuille  2731 2011-03-30 17:31 Lab6b.class
+-rw-rw-r--  1 vertefeuille vertefeuille  3526 2011-03-30 17:31 Lab6b.java
+-rw-r--r--  1 vertefeuille vertefeuille 12288 2011-03-30 17:32 .Lab6b.java.swp
+-rw-rw-r--  1 vertefeuille vertefeuille  1596 2011-03-30 14:54 Lab6.class
+-rw-rw-r--  1 vertefeuille vertefeuille  3878 2011-03-30 14:54 Lab6.java
+-rw-r--r--  1 root         root          4375 2011-04-01 05:52 README.MCU
+-rw-rw-r--  1 vertefeuille vertefeuille  2293 2011-03-30 14:54 ST.class
+===========================================================================
+    *****    All students are required to read and understand   *****
+    *****    the Attendance, Homework, and Late Work Policies   *****
+    *****    which can be found at http://cs.actx.edu/~usnick   *****
+===========================================================================
+Instructor Comments:
+
+Are you still working on this?
+
+The output above shows that you have some sentences printed as two
+lines of text, and some lines of text that contain several sentences.
+
+Your output should display one sentence per line of text.
+
+I'm not sure what you're doing with the "Enter a 1 for Words or a 2 for sentences."???
+
+Partial Credit Grade:  50
+
+April 6 regrade ====================================
+better, but still not quite 100%
+
+[Here is a nice sentence.]
+[This sentence is continued on the next line.]
+[This is a short sentence.]
+[So is this one.]
+[Mr. Jones is a nice man.]
+[Sentence 1.]
+[Sentence 2.  Sentence 3.  Sentence 4.  Sentence 5.]
+[Your program should not have any limits on the number of sentences per line and should also not have any]
+[restrictions on the number of lines per sentence - some of them can be pretty long - like this one.]
+
+Partial credit grade:  80 - 10pts (late/regrade) = 70

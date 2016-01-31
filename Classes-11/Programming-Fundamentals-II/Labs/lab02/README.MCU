@@ -1,0 +1,79 @@
+vertefeuille
+===========================================================================
+NOTE:
+
+To find my comments in this file, which contains both your
+program and its output, search for the string "MCU".
+
+Your grade is at the bottom of this file.
+===========================================================================
+
+Lab2.java SOURCE: ============================
+public class Lab2
+{
+   public static boolean[] numArray;
+   public static void main(String args[])
+   {
+      long start, end, mstime;
+      
+      start = System.currentTimeMillis();
+      numArray = new boolean[1000000];
+      int root = (int) Math.sqrt(numArray.length);
+      for (int i = 2; i < root; i++)
+      {
+         if(numArray[i] == false)
+	 {
+
+            for (int j = i+i; j < numArray.length; j = j+i)
+	    {
+	       if (numArray[j] == false)
+	       {
+	          numArray[j] = true;
+	       }
+	    }
+	 }
+      }
+      int c = 0;
+      for (int i = 2; i < numArray.length; i++)
+      {
+         if (numArray[i] == false)
+	 {
+	    System.out.println(i);
+	    c++;
+	 }
+      }
+
+      end = System.currentTimeMillis();
+      mstime = end - start;
+      System.out.println("#primes = " + c + " mstime = " + mstime);
+   }
+}
+OUTPUT: =====================================
+999883
+999907
+999917
+999931
+999953
+999959
+999961
+999979
+999983
+#primes = 78498 mstime = 2134
+DUE DATE: Feb 9 10:30 pm   ================================================
+total 576
+drwxrwxr-x 2 vertefeuille vertefeuille   4096 2011-02-10 09:56 .
+drwxrwx--- 6 vertefeuille vertefeuille   4096 2011-02-08 10:32 ..
+-rw-rw-r-- 1 vertefeuille vertefeuille   1116 2011-02-02 12:26 Lab2.class
+-rw-rw-r-- 1 vertefeuille vertefeuille    835 2011-02-02 12:25 Lab2.java
+-rw-rw-r-- 1 vertefeuille vertefeuille 538498 2011-02-08 11:37 primes.txt
+-rw-r--r-- 1 root         root           1425 2011-02-10 09:56 README.MCU
+===========================================================================
+    *****    All students are required to read and understand   *****
+    *****    the Attendance, Homework, and Late Work Policies   *****
+    *****    which can be found at http://cs.actx.edu/~usnick   *****
+===========================================================================
+Instructor Comments:
+
+Super job.
+
+Grade:  100
