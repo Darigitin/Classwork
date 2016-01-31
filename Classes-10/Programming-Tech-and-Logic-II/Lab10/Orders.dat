@@ -1,0 +1,17 @@
+Customer name = John
+Address = 123 Main Street
+Phone Number = 781-555-4567
+Credit Limit= 50.0
+Balance= 50.0
+Orders [
+Order Number: 44
+Order Date: May 2, 2010
+Order Amount: 1.0
+Order Price: $35.00
+
+Call Rep Matthew
+Call Duration in minutes 40
+Total Due: 40.0
+
+Thank you for placing your order through the phone
+]

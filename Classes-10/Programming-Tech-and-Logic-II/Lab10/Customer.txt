@@ -1,0 +1,6 @@
+Customer name = John
+Address = 123 Main Street
+Phone Number = 781-555-4567
+Credit Limit= 50.0
+Balance= 10.0
+Orders []

@@ -1,0 +1,16 @@
+Customer name = John
+Address = 123 Main Street
+Phone Number = 781-555-4567
+Credit Limit= 50.0
+Balance= 25.0
+Orders [
+Order Number: 4
+Order Date: May 2, 2010
+Order Amount: 3.0
+Order Price: $5.00
+
+Customer email: mrael@hotmail.com
+Total Due: 15.0
+
+Thank you for placing your order through our Internet Site
+]
